@@ -1,19 +1,96 @@
-body {
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 250px;
-    background-image: url('images/background.jpg'); /* Arka plan görüntüsü */
-    background-size: cover; /* Arka plan görüntüsünün sayfa boyutuna uyum sağlaması */
-    background-position: top; /* Arka plan görüntüsünün ortalanması */
-    image-rendering: pixelated;
-    position: relative;
+    padding: 0;
+    overflow: hidden; /* Sayfa taşmasını engeller */
 }
 
-.overlay {
+.background {
+    background-image: url('images/background.jpg'); /* Arka plan görüntüsü */
+    background-size: 100%; /* Arka plan görüntüsünün sayfa boyutuna uyum sağlaması */
+    background-repeat: repeat;
+    background-position: top; /* Arka plan görüntüsünün ortalanması */
+    image-rendering: pixelated;
+    height: 100%; /* Sayfa yüksekliği */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1400px) {
+    .background {
+        background-size: 200%; /* Mobil cihazlar için arka plan resmini %100 boyutunda göster */
+    }
+}
+
+.background-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.9) 100%);
+}
+
+.background-filter {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3); /* Saydam bir renk */
+}
+
+.hand {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    bottom: -50%;
+    transform: translate(50%, -30%);
+    display: flex;
+    align-items: baseline;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.card-deck {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transform: translateX(-50%);
+    right: -40%;
+    display: flex;
+    background-color: rgba(255, 0, 0, 0.5);
+    flex-direction: column-reverse; /* Sıralamayı tersine çevir */
+    align-items: flex-end; /* Sağ kenara hizala */
+}
+
+.card-placeholder-holder{
+    position: fixed;
+}
+
+.card-placeholder {
+    width: 250px;
+    height: 350px;
+    position: fixed;
+    transform: translate(50%, 50%);
+    display: flex; /* Flex konteynırı olarak ayarla */
+    align-items: flex-end; /* Dikey eksende sağ alt köşeye hizala */
+    justify-content: flex-end; /* Yatay eksende sağ alt köşeye hizala */
+    bottom: 50%; /* Alttan 20 piksel boşluk bırak */
+    right: 10%; /* Sağdan 20 piksel boşluk bırak */
+    z-index: 1;
+}
+
+
+
+.card {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    display: inline-block;
+    margin-right: -50px; /* Kartların birbirinin üstüne binmesi için negatif margin */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease, z-index 0.1s;
+    cursor: pointer;
 }
 
