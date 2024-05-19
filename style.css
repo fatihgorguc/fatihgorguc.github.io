@@ -30,6 +30,7 @@ body, html {
     width: 100%;
     height: 100%;
     background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
 }
 
 .background-filter {
@@ -39,28 +40,27 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3); /* Saydam bir renk */
+    pointer-events: none;
 }
 
 .hand {
-    width: 200px;
+    width: 90%;
     height: 300px;
-    position: relative;
-    bottom: -50%;
-    transform: translate(50%, -30%);
+    position: fixed;
+    bottom: -30px;
     display: flex;
+    justify-content: center;
     align-items: baseline;
-    background-color: rgba(255, 0, 0, 0.5);
 }
 
 .card-deck {
     width: 200px;
     height: 300px;
-    position: relative;
-    transform: translateX(-50%);
-    right: -40%;
+    transform: translateX(50%);
+    position: fixed;
+    right: 15%;
+    background-color: rgba(255, 0, 0, 1);
     display: flex;
-    background-color: rgba(255, 0, 0, 0.5);
-    flex-direction: column-reverse; /* Sıralamayı tersine çevir */
     align-items: flex-end; /* Sağ kenara hizala */
 }
 
@@ -69,28 +69,65 @@ body, html {
 }
 
 .card-placeholder {
-    width: 250px;
-    height: 350px;
+    width: 200px;
+    height: 300px;
     position: fixed;
     transform: translate(50%, 50%);
     display: flex; /* Flex konteynırı olarak ayarla */
     align-items: flex-end; /* Dikey eksende sağ alt köşeye hizala */
     justify-content: flex-end; /* Yatay eksende sağ alt köşeye hizala */
     bottom: 50%; /* Alttan 20 piksel boşluk bırak */
-    right: 10%; /* Sağdan 20 piksel boşluk bırak */
+    right: 15%; /* Sağdan 20 piksel boşluk bırak */
     z-index: 1;
 }
 
+@keyframes card-placeholder-animation {
+    100% {
+        bottom: -30%;
+        right: 50%;
+    }
+}
 
+.card-placeholder.animate {
+    animation: card-placeholder-animation 1s ease-in forwards;
+}
 
 .card {
     width: 200px;
     height: 300px;
     position: relative;
-    display: inline-block;
-    margin-right: -50px; /* Kartların birbirinin üstüne binmesi için negatif margin */
+    rotation-point: bottom;
+    background-size: cover;
+    background-position: center;
+    background-color: white;
     opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease, z-index 0.1s;
+    margin-right: -1.5%;
+    margin-left: -1.5%;
+    display: inline-block;
     cursor: pointer;
+    pointer-events: none;
+    transition: transform 0.2s, margin 0.2s;
 }
 
+@keyframes cardSpawnAnimation {
+    0% {
+        transform: scale(0.2) translateY(400%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) translateY(0%);
+        opacity: 1;
+    }
+}
+
+.card.spawn-animation {
+    animation: cardSpawnAnimation 2s ease-out forwards;
+    
+}
+
+.card:hover {
+    transform: scale(1.2) translateY(-20%) !important;
+    z-index: 100;
+    margin-right: 2%;
+    margin-left: 2%;
+}
