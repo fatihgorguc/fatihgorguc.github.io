@@ -1,19 +1,15 @@
 // Card sınıfı tanımlaması
 class Card {
-    constructor(imageUrl, text, color) {
-        this.imageUrl = imageUrl;
-        this.text = text;
-        this.color = color;
+    constructor(frontImage, backImage) {
+        this.frontImageUrl = frontImage;
+        this.backImageUrl = backImage;
     }
 }
 
 // Kart nesnelerini oluştur
 const cards = [
-    new Card('image1.jpg', 'Kart 1', '#FF5733'),
-    new Card('image2.jpg', 'Kart 2', '#33FF57'),
-    new Card('image3.jpg', 'Kart 3', '#5733FF'),
-    new Card('image4.jpg', 'Kart 4', '#FFFF33'),
-    new Card('image5.jpg', 'Kart 5', '#33FFFF')
+    new Card('images/CardFront1.png', 'images/CardBack1.png'),
+    new Card('images/CardFront2.png', 'images/CardBack2.png'),
 ];
 
 // Kart destesi oluştur
@@ -45,14 +41,12 @@ function createHandCards() {
     cards.forEach((card, index) => {
         const newCard = document.createElement('div');
         newCard.classList.add('card');
-        newCard.style.backgroundColor = card.color;
-        newCard.style.backgroundImage = `url(${card.imageUrl})`;
+        newCard.style.backgroundImage = `url(${card.frontImageUrl})`;
         
         newCard.style.transform = `translateY(${Math.abs(index - (cards.length-1)/2) * 15}px) rotate(${(index - (cards.length-1)/2) * 5}deg)`;
         newCard.style.rotate = `${(index - (cards.length-1)/2) * 5}deg`;
         newCard.style.translate = `0 ${Math.abs(index - (cards.length-1)/2) * 15}px`;
         
-        newCard.innerHTML = `<span>${card.text}</span>`;
         hand.appendChild(newCard);
     });
 }
@@ -64,7 +58,8 @@ function createCardPlaceholders() {
     cards.forEach((card, index) => {
         const cardPlaceholder = document.createElement('div');
         cardPlaceholder.classList.add('card-placeholder');
-        cardPlaceholder.style.backgroundColor = card.color; // Kartın rengini ayarla
+        cardPlaceholder.style.backgroundImage = `url(${card.backImageUrl})`;
+        console.log(cardPlaceholder.style.backgroundImage);
         cardPlaceholder.style.zIndex = zIndex--; // z-index değerini azaltarak her kart için bir öncekinden düşük bir değer ayarla
         document.body.appendChild(cardPlaceholder); // Body içine yerleştir
     });
