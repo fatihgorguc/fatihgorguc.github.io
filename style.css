@@ -17,9 +17,21 @@ body, html {
     justify-content: center;
 }
 
-@media (max-width: 1400px) {
+@media (max-aspect-ratio: 1/1) {
     .background {
-        background-size: 200%; /* Mobil cihazlar için arka plan resmini %100 boyutunda göster */
+        background-size: 300%; /* Mobil cihazlar için arka plan resmini %100 boyutunda göster */
+    }
+    .card-deck {
+        width: 150px;
+        height: 225px;
+    }
+    .card {
+        width: 100px;
+        height: 150px;
+    }
+    .card-placeholder {
+        width: 100px;
+        height: 150px;
     }
 }
 
@@ -59,8 +71,9 @@ body, html {
     transform: translateX(50%);
     position: fixed;
     right: 15%;
-    background-image: url("images/CardDeck.png");
+    background-image: url("images/CardDeckLow.png");
     background-size: cover;
+    filter: pixelate();
     display: flex;
     align-items: flex-end; /* Sağ kenara hizala */
 }
@@ -76,6 +89,7 @@ body, html {
     transform: translate(50%, 50%);
     background-size: cover;
     background-repeat: no-repeat;
+    filter: pixelate();
     display: flex; /* Flex konteynırı olarak ayarla */
     align-items: flex-end; /* Dikey eksende sağ alt köşeye hizala */
     justify-content: flex-end; /* Yatay eksende sağ alt köşeye hizala */
@@ -109,6 +123,7 @@ body, html {
     cursor: pointer;
     pointer-events: none;
     transition: transform 0.2s, margin 0.2s;
+    filter: pixelate();
 }
 
 @keyframes cardSpawnAnimation {

@@ -8,8 +8,8 @@ class Card {
 
 // Kart nesnelerini oluştur
 const cards = [
-    new Card('images/CardFront1.png', 'images/CardBack1.png'),
-    new Card('images/CardFront2.png', 'images/CardBack2.png'),
+    new Card('images/CardFront1.png', 'images/CardBackLow1.png'),
+    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
 ];
 
 // Kart destesi oluştur
