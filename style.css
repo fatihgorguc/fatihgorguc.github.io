@@ -17,24 +17,6 @@ body, html {
     justify-content: center;
 }
 
-@media (max-aspect-ratio: 1/1) {
-    .background {
-        background-size: 300%; /* Mobil cihazlar için arka plan resmini %100 boyutunda göster */
-    }
-    .card-deck {
-        width: 150px;
-        height: 225px;
-    }
-    .card {
-        width: 100px;
-        height: 150px;
-    }
-    .card-placeholder {
-        width: 100px;
-        height: 150px;
-    }
-}
-
 .background-vignette {
     position: absolute;
     top: 0;
@@ -63,6 +45,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: baseline;
+    z-index: 50;
 }
 
 .card-deck {
@@ -73,9 +56,10 @@ body, html {
     right: 15%;
     background-image: url("images/CardDeckLow.png");
     background-size: cover;
-    filter: pixelate();
+    image-rendering: pixelated;
     display: flex;
     align-items: flex-end; /* Sağ kenara hizala */
+    z-index: 1;
 }
 
 .card-placeholder-holder{
@@ -89,13 +73,13 @@ body, html {
     transform: translate(50%, 50%);
     background-size: cover;
     background-repeat: no-repeat;
-    filter: pixelate();
+    image-rendering: pixelated;
     display: flex; /* Flex konteynırı olarak ayarla */
     align-items: flex-end; /* Dikey eksende sağ alt köşeye hizala */
     justify-content: flex-end; /* Yatay eksende sağ alt köşeye hizala */
     bottom: 50%; /* Alttan 20 piksel boşluk bırak */
     right: 15%; /* Sağdan 20 piksel boşluk bırak */
-    z-index: 1;
+    z-index: 20;
 }
 
 @keyframes card-placeholder-animation {
@@ -123,7 +107,8 @@ body, html {
     cursor: pointer;
     pointer-events: none;
     transition: transform 0.2s, margin 0.2s;
-    filter: pixelate();
+    image-rendering: pixelated;
+    z-index: 50;
 }
 
 @keyframes cardSpawnAnimation {
@@ -144,7 +129,25 @@ body, html {
 
 .card:hover {
     transform: scale(1.2) translateY(-20%) !important;
-    z-index: 100;
+    z-index: 100; !important;
     margin-right: 2%;
     margin-left: 2%;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .background {
+        background-size: 300%; /* Mobil cihazlar için arka plan resmini %100 boyutunda göster */
+    }
+    .card-deck {
+        width: 200px;
+        height: 300px;
+    }
+    .card {
+        width: 133px;
+        height: 200px;
+    }
+    .card-placeholder {
+        width: 133px;
+        height: 200px;
+    }
 }
