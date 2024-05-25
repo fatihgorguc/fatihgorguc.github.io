@@ -10,11 +10,16 @@ class Card {
 const cards = [
     new Card('images/CardFront1.png', 'images/CardBackLow1.png'),
     new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
 ];
 
 // Kart destesi oluştur
 const cardDeck = document.querySelector('.card-deck');
 let isDeckClickable = true;
+let selectedCard = null;
 
 // Kart destesine tıklandığında
 cardDeck.addEventListener('click', function() {
@@ -111,12 +116,53 @@ function startAnimations(placeholderDelay) {
 function enableClickableCards() {
     const hand = document.querySelector('.hand');
     const handCards = hand.querySelectorAll('.card');
-
-    // Kartları tıklanabilir yap
+    
     handCards.forEach(handCard => {
         handCard.style.pointerEvents = 'auto';
+
         handCard.addEventListener('click', function() {
-            console.log(handCard.querySelector('span').innerText);
+            SelectCard(handCard);
+        });
+    });
+}
+
+function SelectCard(card) {
+    const hand = document.querySelector('.hand');
+    const handCards = hand.querySelectorAll('.card');
+    const discardPile = document.querySelector('.discard-pile');
+    
+    card.style.transition = 'translate 1s, rotate 1s, margin 1s';
+    handCards.forEach(card => {
+        card.style.pointerEvents = 'none';
+    });
+
+    // if (selectedCard != null)
+    // {
+    //     selectedCard.style.pointerEvents = 'auto';
+    
+    let moveX =  window.innerWidth / 2 - (card.getBoundingClientRect().x + card.getBoundingClientRect().width / 2);
+    let moveY = window.innerHeight / 2 - (hand.getBoundingClientRect().y + hand.getBoundingClientRect().height / 2);
+    console.log(card.getBoundingClientRect().height / 2)
+    
+    let rotate = Math.random() * 20 - 10
+    card.style.translate = `${moveX}px ${moveY}px`;
+    card.style.margin = '0 -100px';
+    card.style.transform = 'rotate(0deg)';
+    card.style.rotate = `${rotate}deg`;
+    card.classList.add('play-animation');
+    
+    selectedCard = card;
+
+    card.addEventListener('animationend', () => {
+        discardPile.appendChild(card);
+        card.style.position = 'fixed'
+        card.classList.remove('play-animation');
+        card.style.rotate = `${rotate}deg`;
+        
+        handCards.forEach(card => {
+            if (card != selectedCard) {
+                card.style.pointerEvents = 'auto';
+            }
         });
     });
 }
