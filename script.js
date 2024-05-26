@@ -1,6 +1,7 @@
 // Card sınıfı tanımlaması
 class Card {
-    constructor(frontImage, backImage) {
+    constructor(cardIndex, frontImage, backImage) {
+        this.index = cardIndex
         this.frontImageUrl = frontImage;
         this.backImageUrl = backImage;
     }
@@ -8,18 +9,19 @@ class Card {
 
 // Kart nesnelerini oluştur
 const cards = [
-    new Card('images/CardFront1.png', 'images/CardBackLow1.png'),
-    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card('images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png'),
+    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card(3,'images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card(4,'images/CardFront2.png', 'images/CardBackLow2.png'),
 ];
 
-// Kart destesi oluştur
 const cardDeck = document.querySelector('.card-deck');
+const hand = document.querySelector('.hand');
+const discardPile = document.querySelector('.discard-pile');
+
+let handCards;
+
 let isDeckClickable = true;
-let selectedCard = null;
 
 // Kart destesine tıklandığında
 cardDeck.addEventListener('click', function() {
@@ -39,13 +41,18 @@ function dealCards() {
     startAnimations(placeholderDelay);
 }
 
-function createHandCards() {
-    const hand = document.querySelector('.hand');
+function getMissingCards() {
+    handCards = hand.querySelectorAll('.card');
+    const handCardIndices = Array.from(handCards).map(card => parseInt(card.dataset.index, 10));
+    return cards.filter(card => !handCardIndices.includes(card.index));
+}
 
+function createHandCards() {
     // Kartları eline ekle
     cards.forEach((card, index) => {
         const newCard = document.createElement('div');
         newCard.classList.add('card');
+        newCard.dataset.index = card.index;
         newCard.style.backgroundImage = `url(${card.frontImageUrl})`;
         
         newCard.style.transform = `translateY(${Math.abs(index - (cards.length-1)/2) * 15}px) rotate(${(index - (cards.length-1)/2) * 5}deg)`;
@@ -64,17 +71,14 @@ function createCardPlaceholders() {
         const cardPlaceholder = document.createElement('div');
         cardPlaceholder.classList.add('card-placeholder');
         cardPlaceholder.style.backgroundImage = `url(${card.backImageUrl})`;
-        console.log(cardPlaceholder.style.backgroundImage);
         cardPlaceholder.style.zIndex = zIndex--; // z-index değerini azaltarak her kart için bir öncekinden düşük bir değer ayarla
         document.body.appendChild(cardPlaceholder); // Body içine yerleştir
     });
 }
 
-
 function startAnimations(placeholderDelay) {
-    const hand = document.querySelector('.hand');
     const cardPlaceholders = document.querySelectorAll('.card-placeholder');
-    const handCards = hand.querySelectorAll('.card');
+    handCards = document.querySelectorAll('.card');
     
     // Card-placeholder'ların animasyonlarını başlat
     cardPlaceholders.forEach((cardPlaceholder, index) => {
@@ -84,19 +88,19 @@ function startAnimations(placeholderDelay) {
     });
 
     // Card'ların animasyonunu başlat
-    handCards.forEach((handCard, cardIndex) => {
+    handCards.forEach((eachCard, cardIndex) => {
         setTimeout(() => {
-            handCard.classList.add('spawn-animation');
+            eachCard.classList.add('spawn-animation');
             }, placeholderDelay * cardIndex);
     });
     
     // Card'ların animasyonunu bitir
-    handCards.forEach((handCard, cardIndex) => {
-        handCard.addEventListener('animationend', () => {
-            handCard.style.rotate = '0deg';
-            handCard.style.translate = '0px 0px';
-            handCard.style.opacity = 1;
-            handCard.classList.remove('spawn-animation');
+    handCards.forEach((eachCard, cardIndex) => {
+        eachCard.addEventListener('animationend', () => {
+            eachCard.style.rotate = '0deg';
+            eachCard.style.translate = '0px 0px';
+            eachCard.style.opacity = 1;
+            eachCard.classList.remove('spawn-animation');
         });
     });
     
@@ -107,62 +111,49 @@ function startAnimations(placeholderDelay) {
         });
     });
     
-    // Card'ların animasyonları bitince tıklanabilir yap
-    handCards[handCards.length - 1].addEventListener('animationend', () => {
-        enableClickableCards();
-    });
+    handCards[handCards.length - 1].addEventListener('animationend', enableClickableCards, true);
 }
 
-function enableClickableCards() {
-    const hand = document.querySelector('.hand');
-    const handCards = hand.querySelectorAll('.card');
+function enableClickableCards(event) {
+    handCards = document.querySelectorAll('.card');
     
-    handCards.forEach(handCard => {
-        handCard.style.pointerEvents = 'auto';
+    event.target.removeEventListener('animationend', enableClickableCards, true);
+    
+    handCards.forEach(eachCard => {
+        eachCard.style.pointerEvents = 'auto';
 
-        handCard.addEventListener('click', function() {
-            SelectCard(handCard);
+        eachCard.addEventListener('click', function() {
+            selectCard(eachCard);
         });
     });
 }
 
-function SelectCard(card) {
-    const hand = document.querySelector('.hand');
-    const handCards = hand.querySelectorAll('.card');
-    const discardPile = document.querySelector('.discard-pile');
+function selectCard(selectedCard) {
+    handCards = document.querySelectorAll('.card');
     
-    card.style.transition = 'translate 1s, rotate 1s, margin 1s';
-    handCards.forEach(card => {
-        card.style.pointerEvents = 'none';
+    selectedCard.style.transition = 'translate 1s, rotate 1s, margin 1s';
+    handCards.forEach(eachCard => {
+        eachCard.style.pointerEvents = 'none';
     });
-
-    // if (selectedCard != null)
-    // {
-    //     selectedCard.style.pointerEvents = 'auto';
     
-    let moveX =  window.innerWidth / 2 - (card.getBoundingClientRect().x + card.getBoundingClientRect().width / 2);
+    let moveX =  window.innerWidth / 2 - (selectedCard.getBoundingClientRect().x + selectedCard.getBoundingClientRect().width / 2);
     let moveY = window.innerHeight / 2 - (hand.getBoundingClientRect().y + hand.getBoundingClientRect().height / 2);
-    console.log(card.getBoundingClientRect().height / 2)
     
     let rotate = Math.random() * 20 - 10
-    card.style.translate = `${moveX}px ${moveY}px`;
-    card.style.margin = '0 -100px';
-    card.style.transform = 'rotate(0deg)';
-    card.style.rotate = `${rotate}deg`;
-    card.classList.add('play-animation');
+    selectedCard.style.translate = `${moveX}px ${moveY}px`;
+    selectedCard.style.margin = '0 -100px';
+    selectedCard.style.transform = 'rotate(0deg)';
+    selectedCard.style.rotate = `${rotate}deg`;
+    selectedCard.classList.add('play-animation');
     
-    selectedCard = card;
-
-    card.addEventListener('animationend', () => {
-        discardPile.appendChild(card);
-        card.style.position = 'fixed'
-        card.classList.remove('play-animation');
-        card.style.rotate = `${rotate}deg`;
+    selectedCard.addEventListener('animationend', () => {
+        discardPile.appendChild(selectedCard);
+        selectedCard.style.position = 'fixed'
+        selectedCard.classList.remove('play-animation');
+        selectedCard.style.rotate = `${rotate}deg`;
         
-        handCards.forEach(card => {
-            if (card != selectedCard) {
-                card.style.pointerEvents = 'auto';
-            }
+        hand.querySelectorAll('.card').forEach(eachCard => {
+            eachCard.style.pointerEvents = 'auto';
         });
     });
 }
