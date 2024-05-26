@@ -101,8 +101,8 @@ body, html {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    margin-right: -25px;
-    margin-left: -25px;
+    margin-right: -100px;
+    margin-left: -100px;
     display: inline-block;
     cursor: pointer;
     pointer-events: none;
@@ -116,8 +116,14 @@ body, html {
         transform: translateY(400%);
         opacity: 1;
     }
+    30% {
+        margin-right: -25px;
+        margin-left: -25px;
+    }
     100% {
         transform: translateY(0%);
+        margin-right: -25px;
+        margin-left: -25px;
         opacity: 1;
     }
 }
