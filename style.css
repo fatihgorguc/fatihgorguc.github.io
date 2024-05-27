@@ -149,14 +149,14 @@ body, html {
 
 @keyframes cardPlayAnimation {
     0% {
-        transform: translateY(-20%) scale(1.1);
+        transform: translateY(-20%) scale(1.1) !important;
         z-index: 100;
     }
     90%{
         z-index: 100;
     }
     100% {
-        transform: translateY(0%) scale(0.95);
+        transform: translateY(0%) scale(0.95) !important;
         z-index: 5;
     }
 }
@@ -168,7 +168,52 @@ body, html {
     z-index: 1;
 }
 
+.page {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60%;
+    width: 60%;
+    background-color: white;
+    z-index: 200;
+}
 
+.page.show-animation {
+    animation: pageShowAnimation 1s ease forwards;
+}
+
+@keyframes pageShowAnimation {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.page.hide-animation {
+    animation: pageHideAnimation 1s ease forwards;
+}
+
+@keyframes pageHideAnimation {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+.container {
+    position: fixed;
+    height: 100%; /* Subtract the top and bottom margin */
+    width: 100%; /* Subtract the left and right margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
 
 @media (max-aspect-ratio: 1/1) {
     .background {

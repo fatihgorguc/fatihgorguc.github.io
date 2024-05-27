@@ -1,21 +1,23 @@
 class Card {
-    constructor(cardIndex, frontImage, backImage) {
+    constructor(cardIndex, frontImage, backImage, page) {
         this.index = cardIndex
         this.frontImageUrl = frontImage;
         this.backImageUrl = backImage;
+        this.pageUrl = page;
     }
 }
 
 const cards = [
-    new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png'),
-    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card(3,'images/CardFront2.png', 'images/CardBackLow2.png'),
-    new Card(4,'images/CardFront2.png', 'images/CardBackLow2.png'),
+    new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png', 'about-me.html'),
+    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
+    new Card(3,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
+    new Card(4,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
 ];
 
 const cardDeck = document.querySelector('.card-deck');
 const hand = document.querySelector('.hand');
 const discardPile = document.querySelector('.discard-pile');
+const page = document.querySelector('.page');
 
 let missingCards;
 let handCards;
@@ -85,6 +87,7 @@ function createHandCards() {
         newCard.classList.add('card');
         newCard.dataset.index = card.index;
         newCard.style.backgroundImage = `url(${card.frontImageUrl})`;
+        newCard.pageUrl = card.pageUrl;
 
         hand.appendChild(newCard);
 
@@ -169,6 +172,7 @@ function selectCard(newCard) {
     selectedCard.style.transform = 'rotate(0deg)';
     selectedCard.style.rotate = `${rotate}deg`;
     selectedCard.classList.add('play-animation');
+    hidePage();
 
     selectedCard.addEventListener('animationend', () => {
         discardPile.appendChild(selectedCard);
@@ -182,7 +186,29 @@ function selectCard(newCard) {
             eachCard.style.pointerEvents = 'auto';
         });
         isPlayAnimationPlaying = false;
+        showTargetPage();
     });
 
     setHandCardRotations();
+}
+
+function showTargetPage() {
+    const iframe = document.createElement('iframe');
+
+    iframe.src = selectedCard.pageUrl;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    
+    page.appendChild(iframe);
+
+    page.classList.remove('hide-animation');
+    page.classList.add('show-animation');
+}
+
+function hidePage() {
+    page.querySelectorAll('iframe').forEach(iframe => {
+        page.removeChild(iframe);
+        page.classList.remove('show-animation');
+        page.classList.add('hide-animation');
+    });
 }
