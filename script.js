@@ -18,6 +18,7 @@ const cardDeck = document.querySelector('.card-deck');
 const hand = document.querySelector('.hand');
 const discardPile = document.querySelector('.discard-pile');
 const page = document.querySelector('.page');
+const returnArea = document.querySelector('.return-area');
 
 let missingCards;
 let handCards;
@@ -31,8 +32,10 @@ const angleBetweenCards = 5;
 const heightBetweenCards = 15;
 const hoverTime = 0.2;
 const cardAdjustmentTime = 0.7;
+const shakeDuration = 1;
 
 cardDeck.addEventListener('click', dealCards, true);
+returnArea.addEventListener('click', hidePage, true);
 
 function dealCards() {
     if (isDealingCards || isPlayAnimationPlaying) return;
@@ -54,7 +57,7 @@ function setMissingCards() {
 }
 
 function createCardPlaceholders() {
-    let zIndex = 20; // En yüksek z-index değeri, ilk kart en üstte olacak şekilde
+    let zIndex = 100; // En yüksek z-index değeri, ilk kart en üstte olacak şekilde
     
     missingCards.forEach((card) => {
         const cardPlaceholder = document.createElement('div');
@@ -158,7 +161,7 @@ function selectCard(newCard) {
     handCards = document.querySelectorAll('.card');
 
     isPlayAnimationPlaying = true;
-    selectedCard.style.transition = 'translate 1s, rotate 1s, margin 1s';
+    selectedCard.style.transform = 'translateY(0) rotate(0deg)';
     handCards.forEach(eachCard => {
         eachCard.style.pointerEvents = 'none';
     });
@@ -167,9 +170,10 @@ function selectCard(newCard) {
     let moveY = window.innerHeight / 2 - (hand.getBoundingClientRect().y + hand.getBoundingClientRect().height / 2);
 
     let rotate = Math.random() * cardRandomRotation - cardRandomRotation/2;
+
+    selectedCard.style.transition = 'transform 0.95s,translate 1s, rotate 1s, margin 1s';
     selectedCard.style.translate = `${moveX}px ${moveY}px`;
     selectedCard.style.margin = '0 -100px';
-    selectedCard.style.transform = 'rotate(0deg)';
     selectedCard.style.rotate = `${rotate}deg`;
     selectedCard.classList.add('play-animation');
     hidePage();
@@ -181,7 +185,8 @@ function selectCard(newCard) {
         selectedCard.style.rotate = `${rotate}deg`;
         selectedCard.style.translate = '0px 0px';
         selectedCard.style.scale = '0.9';
-
+        shakeScreen();
+        
         hand.querySelectorAll('.card').forEach(eachCard => {
             eachCard.style.pointerEvents = 'auto';
         });
@@ -200,15 +205,23 @@ function showTargetPage() {
     iframe.style.height = '100%';
     
     page.appendChild(iframe);
-
-    page.classList.remove('hide-animation');
-    page.classList.add('show-animation');
+    
+    page.style.transform = 'translateY(100%)';
+    returnArea.style.opacity = '0.3';
+    returnArea.pointerEvents = 'auto';
 }
 
 function hidePage() {
-    page.querySelectorAll('iframe').forEach(iframe => {
-        page.removeChild(iframe);
-        page.classList.remove('show-animation');
-        page.classList.add('hide-animation');
-    });
+    if (page.querySelector("iframe") == null) return;
+    page.querySelectorAll('iframe').forEach(iframe => {page.removeChild(iframe);});
+    page.style.transform = 'translateY(0%)';
+    returnArea.style.opacity = '0';
+    returnArea.pointerEvents = 'none';
+}
+
+function shakeScreen() {
+    document.body.style.animation = `shake ${shakeDuration}s`;
+    setTimeout(function() {
+        document.body.style.animation = '';
+    }, shakeDuration * 1000);
 }
