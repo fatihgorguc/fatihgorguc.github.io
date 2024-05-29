@@ -19,6 +19,7 @@ const hand = document.querySelector('.hand');
 const discardPile = document.querySelector('.discard-pile');
 const page = document.querySelector('.page');
 const returnArea = document.querySelector('.return-area');
+const dustVFX = document.querySelector('.dust-vfx');
 
 let missingCards;
 let handCards;
@@ -186,6 +187,7 @@ function selectCard(newCard) {
         selectedCard.style.translate = '0px 0px';
         selectedCard.style.scale = '0.9';
         shakeScreen();
+        playDustVFX();
         
         hand.querySelectorAll('.card').forEach(eachCard => {
             eachCard.style.pointerEvents = 'auto';
@@ -213,10 +215,14 @@ function showTargetPage() {
 
 function hidePage() {
     if (page.querySelector("iframe") == null) return;
-    page.querySelectorAll('iframe').forEach(iframe => {page.removeChild(iframe);});
     page.style.transform = 'translateY(0%)';
     returnArea.style.opacity = '0';
     returnArea.pointerEvents = 'none';
+    const transitionEndHandler = () => {
+        page.removeEventListener('transitionend', transitionEndHandler, true);
+        page.querySelectorAll('iframe').forEach(iframe => {page.removeChild(iframe);});
+    };
+    page.addEventListener('transitionend', transitionEndHandler, true);
 }
 
 function shakeScreen() {
@@ -224,4 +230,11 @@ function shakeScreen() {
     setTimeout(function() {
         document.body.style.animation = '';
     }, shakeDuration * 1000);
+}
+
+function playDustVFX()
+{
+    dustVFX.style.zIndex = '3';
+    dustVFX.src = '';
+    dustVFX.src = 'images/Dust.gif';
 }
