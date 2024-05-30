@@ -99,26 +99,26 @@ body, html {
     bottom: 50%; /* Alttan 20 piksel boşluk bırak */
     right: 15%; /* Sağdan 20 piksel boşluk bırak */
     z-index: 100;
+    filter: drop-shadow(0px 0px 0 rgba(0,0,0,0.3));
 }
 
 @keyframes card-placeholder-animation {
-    30% {
+    50% {
         bottom: 65%;
         right: 50%;
         scale: 1.3;
-    }
-    70% {
-        bottom: -30%;
-        right: 50%;
+        filter: drop-shadow(170px -20px 0 rgba(0,0,0,0.2));
     }
     100% {
         bottom: -30%;
         right: 50%;
+        scale: 1;
+        filter: drop-shadow(100px 70px 0 rgba(0,0,0,0.3));
     }
 }
 
 .card-placeholder.animate {
-    animation: card-placeholder-animation 1.5s ease forwards;
+    animation: card-placeholder-animation 1s ease forwards;
 }
 
 .card {
@@ -137,6 +137,29 @@ body, html {
     transition: transform 0.2s, margin 0.2s;
     image-rendering: pixelated;
     z-index: 250;
+    filter: drop-shadow(0px 0px 0 rgba(0,0,0,0.5));
+}
+
+.card-image {
+    position: absolute;
+    background-size: cover;
+    image-rendering: pixelated;
+    width: 200px;
+    height: 300px;
+    z-index: 1;
+}
+
+.shadow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 300px;
+    z-index: -1;
+    background-image: url('images/Shadow.png');
+    background-size: cover;
+    image-rendering: pixelated;
+    opacity: 0.5;
 }
 
 @keyframes cardSpawnAnimation {
@@ -207,6 +230,31 @@ body, html {
     }
 }
 
+.shadow.play-animation {
+    animation: shadowPlayAnimation 1s ease forwards;
+}
+
+@keyframes shadowPlayAnimation {
+    0% {
+        top: 20px;
+        left: 20px;
+        scale: 1;
+        opacity: 0.5;
+    }
+    95%{
+        top: 0;
+        left: 150px;
+        scale: 0.7;
+        opacity: 0.3;
+    }
+    100% {
+        top: 0;
+        left: 5px;
+        scale: 1.03;
+        opacity: 0.5;
+    }
+}
+
 .discard-pile {
     position: fixed;
     display: flex;
@@ -247,6 +295,7 @@ body, html {
     align-items: center;
     background-color: blue;
 }
+
 
 @keyframes shake {
     0%, 100% { transform: translate(0); }
@@ -290,5 +339,8 @@ body, html {
     .hand {
         height: 200px;
         width: 200%;
+    }
+    .page {
+        width: 85%;
     }
 }

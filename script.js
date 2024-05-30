@@ -90,8 +90,16 @@ function createHandCards() {
         const newCard = document.createElement('div');
         newCard.classList.add('card');
         newCard.dataset.index = card.index;
-        newCard.style.backgroundImage = `url(${card.frontImageUrl})`;
         newCard.pageUrl = card.pageUrl;
+        
+        const cardImage = document.createElement('div');
+        cardImage.classList.add('card-image');
+        cardImage.style.backgroundImage = `url(${card.frontImageUrl})`;
+        newCard.appendChild(cardImage);
+        
+        const shadow = document.createElement('div');
+        shadow.classList.add('shadow');
+        newCard.appendChild(shadow);
 
         hand.appendChild(newCard);
 
@@ -160,7 +168,8 @@ function selectCard(newCard) {
     if (isDealingCards) return;
     selectedCard = newCard;
     handCards = document.querySelectorAll('.card');
-
+    const shadow = selectedCard.querySelector('.shadow');
+    
     isPlayAnimationPlaying = true;
     selectedCard.style.transform = 'translateY(0) rotate(0deg)';
     handCards.forEach(eachCard => {
@@ -177,31 +186,39 @@ function selectCard(newCard) {
     selectedCard.style.margin = '0 -100px';
     selectedCard.style.rotate = `${rotate}deg`;
     selectedCard.classList.add('play-animation');
+    shadow.classList.add('play-animation');
     hidePage();
 
-    selectedCard.addEventListener('animationend', () => {
+    const animationEndHandler = () => {
+        selectedCard.removeEventListener('animationend', animationEndHandler, true);
         discardPile.appendChild(selectedCard);
         selectedCard.style.position = 'fixed'
         selectedCard.classList.remove('play-animation');
         selectedCard.style.rotate = `${rotate}deg`;
         selectedCard.style.translate = '0px 0px';
         selectedCard.style.scale = '0.9';
+        shadow.classList.remove('play-animation')
+        shadow.style.scale = '1.03';
+        shadow.style.top = '0';
+        shadow.style.left = '5px';
         shakeScreen();
         playDustVFX();
-        
+
         hand.querySelectorAll('.card').forEach(eachCard => {
             eachCard.style.pointerEvents = 'auto';
         });
         isPlayAnimationPlaying = false;
         showTargetPage();
-    });
+    };
+    
+    selectedCard.addEventListener('animationend', animationEndHandler, true);
 
     setHandCardRotations();
 }
 
 function showTargetPage() {
     const iframe = document.createElement('iframe');
-
+    
     iframe.src = selectedCard.pageUrl;
     iframe.style.width = '100%';
     iframe.style.height = '100%';
@@ -221,6 +238,7 @@ function hidePage() {
     const transitionEndHandler = () => {
         page.removeEventListener('transitionend', transitionEndHandler, true);
         page.querySelectorAll('iframe').forEach(iframe => {page.removeChild(iframe);});
+        removeDiscardPileCards();
     };
     page.addEventListener('transitionend', transitionEndHandler, true);
 }
@@ -237,4 +255,12 @@ function playDustVFX()
     dustVFX.style.zIndex = '3';
     dustVFX.src = '';
     dustVFX.src = 'images/Dust.gif';
+}
+
+function removeDiscardPileCards() {
+    const discardList = discardPile.querySelectorAll('.card')
+    if (discardList.length >= 6)
+    {
+        discardPile.removeChild(discardList[0]);
+    }
 }
