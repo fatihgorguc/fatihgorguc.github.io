@@ -70,10 +70,26 @@ body, html {
 .card-deck {
     width: 300px;
     height: 450px;
-    transform: translateX(50%);
     position: fixed;
-    right: 15%;
+    right: calc(15% - 150px);
     background-image: url("images/CardDeckLow.png");
+    background-size: cover;
+    image-rendering: pixelated;
+    display: flex;
+    align-items: flex-end; /* Sağ kenara hizala */
+    z-index: 50;
+}
+
+.card-deck:hover {
+    background-image: url("images/CardDeckLowHover.png");
+}
+
+.draw-a-card {
+    width: 205px;
+    height: 100px;
+    position: fixed;
+    top: calc(50% - 270px);
+    right: calc(15% - 100px);
     background-size: cover;
     image-rendering: pixelated;
     display: flex;
@@ -139,6 +155,7 @@ body, html {
     z-index: 250;
     filter: drop-shadow(0px 0px 0 rgba(0,0,0,0.5));
 }
+
 
 .card-image {
     position: absolute;
@@ -261,6 +278,39 @@ body, html {
     align-items: center;
     justify-content: center;
     z-index: 5;
+}
+
+.candle {
+    width: 500px;
+    height: 625px;
+    position: fixed;
+    left: calc(10% - 200px);
+    top: calc(50% - 350px);
+    background-size: cover;
+    background-image: url("images/CandleShadow.png");
+    opacity: 1;
+    image-rendering: pixelated;
+    display: flex;
+    align-items: flex-end;
+    z-index: 0;
+}
+
+.candle-gif {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    image-rendering: pixelated;
+    opacity: 1;
+}
+
+.light {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    image-rendering: pixelated;
+    opacity: 0.05;
 }
 
 .page {

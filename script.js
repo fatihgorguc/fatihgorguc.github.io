@@ -20,6 +20,7 @@ const discardPile = document.querySelector('.discard-pile');
 const page = document.querySelector('.page');
 const returnArea = document.querySelector('.return-area');
 const dustVFX = document.querySelector('.dust-vfx');
+const drawACard = document.querySelector('.draw-a-card');
 
 let missingCards;
 let handCards;
@@ -49,6 +50,7 @@ function dealCards() {
     createHandCards();
 
     setHandCardRotations();
+    drawACard.style.opacity = '0';
 }
 
 function setMissingCards() {
@@ -167,6 +169,7 @@ function setHandCardRotations() {
 function selectCard(newCard) {
     if (isDealingCards) return;
     selectedCard = newCard;
+    drawACard.style.opacity = '1';
     handCards = document.querySelectorAll('.card');
     const shadow = selectedCard.querySelector('.shadow');
     
