@@ -95,6 +95,7 @@ body, html {
     display: flex;
     align-items: flex-end; /* Sağ kenara hizala */
     z-index: 50;
+    pointer-events: none;
 }
 
 .card-placeholder-holder{
@@ -153,7 +154,6 @@ body, html {
     transition: transform 0.2s, margin 0.2s;
     image-rendering: pixelated;
     z-index: 250;
-    filter: drop-shadow(0px 0px 0 rgba(0,0,0,0.5));
 }
 
 
@@ -302,6 +302,7 @@ body, html {
     background-size: cover;
     image-rendering: pixelated;
     opacity: 1;
+    pointer-events: none;
 }
 
 .light {
@@ -311,16 +312,36 @@ body, html {
     background-size: cover;
     image-rendering: pixelated;
     opacity: 0.05;
+    pointer-events: none;
 }
 
 .page {
     position: absolute;
-    top: -75%;
-    height: 75%;
-    width: 50%;
-    background-color: white;
+    border: none;
+    top: -1280px;
+    height: 640px;
+    width: 900px;
     z-index: 150;
-    transition: transform 0.8s ease ,translate 0.8s;
+    transition: transform 0.6s ease-in-out 0.2s;
+}
+
+.page-background {
+    position: absolute;
+    left: -12.5%;
+    bottom: -25%;
+    height: 360%;
+    width: 125%;
+    z-index: -5;
+    pointer-events: none;
+    image-rendering: pixelated;
+    filter: drop-shadow(20px 30px 0px rgba(0,0,0,0.5));
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .return-area {
@@ -377,10 +398,14 @@ body, html {
     .card-deck {
         width: 200px;
         height: 300px;
+        right: calc(15% - 100px);
     }
-    .card {
-        width: 133px;
-        height: 200px;
+    .candle {
+        width: 325px;
+        height: 450px;
+        position: fixed;
+        left: calc(10% - 100px);
+        top: calc(50% - 225px);
     }
     .card-placeholder {
         width: 133px;
@@ -391,6 +416,11 @@ body, html {
         width: 200%;
     }
     .page {
-        width: 85%;
+        top: -3200px;
+        height: 1600px;
+        width: 800px;
+    }
+    .page-background {
+        height: 125%;
     }
 }

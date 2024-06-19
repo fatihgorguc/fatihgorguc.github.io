@@ -21,6 +21,7 @@ const page = document.querySelector('.page');
 const returnArea = document.querySelector('.return-area');
 const dustVFX = document.querySelector('.dust-vfx');
 const drawACard = document.querySelector('.draw-a-card');
+const pageBackground = document.querySelector('.page-background');
 
 let missingCards;
 let handCards;
@@ -223,12 +224,12 @@ function showTargetPage() {
     const iframe = document.createElement('iframe');
     
     iframe.src = selectedCard.pageUrl;
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
+    iframe.classList.add('frame');
     
     page.appendChild(iframe);
     
-    page.style.transform = 'translateY(100%)';
+    page.style.transform = 'translateY(200%)';
+    pageBackground.src = 'images/Paper.gif';
     returnArea.style.opacity = '0.3';
     returnArea.pointerEvents = 'auto';
 }
@@ -236,6 +237,7 @@ function showTargetPage() {
 function hidePage() {
     if (page.querySelector("iframe") == null) return;
     page.style.transform = 'translateY(0%)';
+    pageBackground.src = 'images/PaperReverse.gif';
     returnArea.style.opacity = '0';
     returnArea.pointerEvents = 'none';
     const transitionEndHandler = () => {
