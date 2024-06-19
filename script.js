@@ -228,6 +228,7 @@ function showTargetPage() {
     
     page.appendChild(iframe);
     
+    page.style.transition = 'transform 0.8s ease-out 0.2s';
     page.style.transform = 'translateY(200%)';
     pageBackground.src = 'images/Paper.gif';
     returnArea.style.opacity = '0.3';
@@ -236,6 +237,8 @@ function showTargetPage() {
 
 function hidePage() {
     if (page.querySelector("iframe") == null) return;
+
+    page.style.transition = 'transform 0.8s ease-in 0.2s';
     page.style.transform = 'translateY(0%)';
     pageBackground.src = 'images/PaperReverse.gif';
     returnArea.style.opacity = '0';

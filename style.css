@@ -89,7 +89,7 @@ body, html {
     height: 100px;
     position: fixed;
     top: calc(50% - 270px);
-    right: calc(15% - 100px);
+    right: calc(15% - 102px);
     background-size: cover;
     image-rendering: pixelated;
     display: flex;
@@ -396,9 +396,19 @@ body, html {
         background-size: 300%; /* Mobil cihazlar için arka plan resmini %300 boyutunda göster */
     }
     .card-deck {
-        width: 200px;
-        height: 300px;
-        right: calc(15% - 100px);
+        width: 150px;
+        height: 225px;
+        right: calc(15% - 75px);
+    }
+    .draw-a-card {
+        width: 102px;
+        height: 50px;
+        top: calc(50% - 150px);
+        right: calc(15% - 51px);
+    }
+    .card {
+        width: 100px;
+        height: 150px;
     }
     .candle {
         width: 325px;
