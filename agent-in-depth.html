@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fatih Görgüç</title>
+    <title>AGENT IN DEPTH</title>
+    <style>
+        @font-face {
+            font-family: 'TitleFont';
+            src: url('fonts/pixelbasic.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'ShortDescriptionFont';
+            src: url('fonts/pixelbasic.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'DescriptionFont';
+            src: url('fonts/pixelbasic.ttf') format('truetype');
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        .title {
+            font-family: 'TitleFont', sans-serif;
+            text-align: center;
+            font-size: 56px;
+            margin-top: 10px;
+            color: rgb(70, 70, 70);
+            text-decoration: none;
+            filter: drop-shadow(0px 14px 0px rgb(0, 0, 0));
+        }
+        .short-description {
+            font-family: 'ShortDescriptionFont', sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+        
+        .description {
+            font-family: 'DescriptionFont', sans-serif;
+            font-size: 12px;
+            text-align: left;
+            color: rgb(70, 70, 70);
+        }
+        .video-container {
+            width: 800px;
+            height: 450px;
+            max-width: 100%;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <h1>Agent In Depth</h1>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-    <section id="home">
-        <h2>Home</h2>
-        <p>This is the home section of the website.</p>
-    </section>
-
-    <section id="about">
-        <h2>About</h2>
-        <p>This section contains information about Fatih Görgüç.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Here is the contact information.</p>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2024 Fatih Görgüç. All rights reserved.</p>
-</footer>
-
-<script></script>
+    <a href="https://store.steampowered.com/app/2096080/Agent_in_Depth/" target="_blank" class="title">AGENT IN DEPTH</a>
+    <div class="short-description">
+        An instant-death fast-paced action platformer
+    </div>
+    <div class="description">
+        This is a short description about the page. Here you can find various interesting content and information.This is a short description about the page. Here you can find various interesting content and information.This is a short description about the page. Here you can find various interesting content and information.This is a short description about the page. Here you can find various interesting content and information.This is a short description about the page. Here you can find various interesting content and information.
+    </div>
+    <div class="video-container">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nwU1SDE3is8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </body>
 </html>
