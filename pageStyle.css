@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'TitleFont';
+    src: url('fonts/pixeltitle.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'ShortDescriptionFont';
+    src: url('fonts/pixelbasic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DescriptionFont';
+    src: url('fonts/pixelclean.ttf') format('truetype');
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.title {
+    font-family: 'TitleFont', sans-serif;
+    text-align: center;
+    font-size: 60px;
+    margin: 10px;
+    color: rgb(67, 64, 90);
+    text-decoration: none;
+    filter: drop-shadow(0px 6px 0px rgb(0, 0, 0));
+}
+.short-description {
+    font-family: 'ShortDescriptionFont', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(90, 97, 85);
+}
+.game-details, .description, .role {
+    font-family: 'DescriptionFont', sans-serif;
+    text-align: left;
+    margin: 20px;
+}
+
+.game-details h1, .description h1, .role h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: rgb(67, 64, 90);
+}
+.game-details ul, .role ul {
+    list-style-type: disc;
+}
+.game-details li, .role li, .role p {
+    font-size: 24px;
+    color: rgb(90, 97, 85);
+    margin-bottom: 5px;
+}
+
+p {
+    text-indent: 30px;
+}
+.description p {
+    font-size: 24px;
+    color: rgb(90, 97, 85);
+    margin-bottom: 20px;
+}
+.video-container {
+    width: 800px;
+    height: 450px;
+    max-width: 100%;
+    margin-top: 30px;
+}
+.game-details strong {
+    color: rgb(0, 0, 0);
+}
+
+.game-details a, .game-details a:visited {
+    color: rgb(100, 130, 200);
+    text-decoration: underline;
+}

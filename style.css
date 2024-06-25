@@ -411,11 +411,27 @@ body, html {
         height: 450px;
         position: fixed;
         left: calc(50% - 162px);
-        top: calc(10% - 225px);
+        top: calc(20% - 225px);
     }
     .card-placeholder {
-        width: 133px;
-        height: 200px;
+        width: 100px;
+        height: 150px;
+    }
+    .card-image {
+        width: 100px;
+        height: 150px;
+    }
+    .shadow {
+        width: 100px;
+        height: 150px;
+        top: 10px;
+        left: 10px;
+    }
+    .dust-vfx {
+        width: 150px;
+        height: 225px;
+        top: calc(50% - 112.5px);
+        left: calc(50% - 77.5px);
     }
     .hand {
         height: 200px;
