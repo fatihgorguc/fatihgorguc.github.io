@@ -411,11 +411,17 @@ body, html {
         height: 450px;
         position: fixed;
         left: calc(50% - 162px);
-        top: calc(20% - 225px);
+        top: calc(15% - 225px);
     }
     .card-placeholder {
         width: 100px;
         height: 150px;
+    }
+    .card {
+        width: 100px;
+        height: 150px;
+        margin-right: -50px;
+        margin-left: -50px;
     }
     .card-image {
         width: 100px;
