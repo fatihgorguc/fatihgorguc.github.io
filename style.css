@@ -216,18 +216,6 @@ body, html {
     animation: cardSpawnAnimation 1.5s ease-out forwards;
 }
 
-.card:hover {
-    transform: translateY(-20%) !important;
-    scale: 1.2;
-    z-index: 300; ;
-    margin-right: 25px !important;
-    margin-left: 25px !important;
-}
-
-.card:active {
-    scale: 1.1 !important;
-}
-
 .card.play-animation {
     animation: cardPlayAnimation 1s ease forwards;
 }
@@ -391,6 +379,20 @@ body, html {
     95% { transform: translate(-0.1px, -0.05px); }
 }
 
+@media (min-aspect-ratio: 1/1) {
+    .card:hover {
+        transform: translateY(-20%) !important;
+        scale: 1.2;
+        z-index: 300; ;
+        margin-right: 25px !important;
+        margin-left: 25px !important;
+    }
+
+    .card:active {
+        scale: 1.1 !important;
+    }
+}
+
 @media (max-aspect-ratio: 1/1) {
     .background {
         background-size: 300%; /* Mobil cihazlar için arka plan resmini %300 boyutunda göster */
@@ -420,8 +422,8 @@ body, html {
     .card {
         width: 100px;
         height: 150px;
-        margin-right: -50px;
-        margin-left: -50px;
+        margin-right: -25px;
+        margin-left: -25px;
     }
     .card-image {
         width: 100px;

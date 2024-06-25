@@ -76,3 +76,24 @@ p {
     color: rgb(100, 130, 200);
     text-decoration: underline;
 }
+
+@media (max-aspect-ratio: 1) {
+    .title {
+        font-size: 40px;
+        filter: drop-shadow(0px 4px 0px rgb(0, 0, 0));
+    }
+    .short-description {
+        font-size: 10px;
+    }
+    .game-details h1, .description h1, .role h1 {
+        font-size: 20px;
+        margin: 10px;
+    }
+    .game-details li, .description p, .role li, .role p {
+        font-size: 16px;
+    }
+    .video-container {
+        width: 300px;
+        height: 170px;
+    }
+}

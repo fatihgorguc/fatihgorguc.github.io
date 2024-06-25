@@ -187,7 +187,15 @@ function selectCard(newCard) {
 
     selectedCard.style.transition = 'transform 0.95s,translate 1s, rotate 1s, margin 1s';
     selectedCard.style.translate = `${moveX}px ${moveY}px`;
-    selectedCard.style.margin = '0 -100px';
+    if (window.innerWidth / window.innerHeight  < 1)
+    {
+        selectedCard.style.margin = '0 -50px';
+        console.log('mobile');
+    }
+    else
+    {
+        selectedCard.style.margin = '0 -100px';
+    }
     selectedCard.style.rotate = `${rotate}deg`;
     selectedCard.classList.add('play-animation');
     shadow.classList.add('play-animation');
@@ -243,10 +251,10 @@ function hidePage() {
     pageBackground.src = 'images/PaperReverse.gif';
     returnArea.style.opacity = '0';
     returnArea.pointerEvents = 'none';
+    removeDiscardPileCards();
     const transitionEndHandler = () => {
         page.removeEventListener('transitionend', transitionEndHandler, true);
         page.querySelectorAll('iframe').forEach(iframe => {page.removeChild(iframe);});
-        removeDiscardPileCards();
     };
     page.addEventListener('transitionend', transitionEndHandler, true);
 }
