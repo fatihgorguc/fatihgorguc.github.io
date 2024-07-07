@@ -8,10 +8,10 @@ class Card {
 }
 
 const cards = [
-    new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png', 'about-me.html'),
-    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'resume.html'),
-    new Card(3,'images/CardFront3.png', 'images/CardBackLow3.png', 'agent-in-depth.html'),
-    new Card(4,'images/CardFront4.png', 'images/CardBackLow4.png', 'other.html'),
+    new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png', 'pages/about-me.html'),
+    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'pages/resume.html'),
+    new Card(3,'images/CardFront3.png', 'images/CardBackLow3.png', 'pages/agent-in-depth.html'),
+    new Card(4,'images/CardFront4.png', 'images/CardBackLow4.png', 'pages/other.html'),
 ];
 
 const cardDeck = document.querySelector('.card-deck');
@@ -22,6 +22,7 @@ const returnArea = document.querySelector('.return-area');
 const dustVFX = document.querySelector('.dust-vfx');
 const drawACard = document.querySelector('.draw-a-card');
 const pageBackground = document.querySelector('.page-background');
+const aspectRatio = window.innerWidth / window.innerHeight;
 
 let missingCards;
 let handCards;
@@ -231,14 +232,23 @@ function selectCard(newCard) {
 function showTargetPage() {
     const iframe = document.createElement('iframe');
     
+
     iframe.src = selectedCard.pageUrl;
     iframe.classList.add('frame');
     
     page.appendChild(iframe);
     
-    page.style.transition = 'transform 0.8s ease-out 0.2s';
+    page.style.transition = 'transform 0.6s ease-out 0.15s';
     page.style.transform = 'translateY(200%)';
-    pageBackground.src = 'images/Paper.gif';
+
+    console.log(aspectRatio)
+    if (aspectRatio < 1) {
+        pageBackground.src = 'images/Paper.gif';
+    } 
+    else 
+    {
+        pageBackground.src = 'images/PaperHigh.gif';
+    }
     returnArea.style.opacity = '0.3';
     returnArea.pointerEvents = 'auto';
 }
@@ -246,9 +256,15 @@ function showTargetPage() {
 function hidePage() {
     if (page.querySelector("iframe") == null) return;
 
-    page.style.transition = 'transform 0.8s ease-in 0.2s';
+    page.style.transition = 'transform 0.6s ease-in 0.15s';
     page.style.transform = 'translateY(0%)';
-    pageBackground.src = 'images/PaperReverse.gif';
+    if (aspectRatio < 1) {
+        pageBackground.src = 'images/PaperReverse.gif';
+    }
+    else
+    {
+        pageBackground.src = 'images/PaperHighReverse.gif';
+    }
     returnArea.style.opacity = '0';
     returnArea.pointerEvents = 'none';
     removeDiscardPileCards();
