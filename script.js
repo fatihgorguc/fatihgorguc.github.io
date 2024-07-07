@@ -9,9 +9,9 @@ class Card {
 
 const cards = [
     new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png', 'about-me.html'),
-    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
-    new Card(3,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
-    new Card(4,'images/CardFront2.png', 'images/CardBackLow2.png', 'agent-in-depth.html'),
+    new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'resume.html'),
+    new Card(3,'images/CardFront3.png', 'images/CardBackLow3.png', 'agent-in-depth.html'),
+    new Card(4,'images/CardFront4.png', 'images/CardBackLow4.png', 'other.html'),
 ];
 
 const cardDeck = document.querySelector('.card-deck');

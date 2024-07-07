@@ -34,21 +34,22 @@ body::-webkit-scrollbar {
     text-align: center;
     color: rgb(90, 97, 85);
 }
-.game-details, .description, .role {
+.details, .description, .role {
     font-family: 'DescriptionFont', sans-serif;
+    width: 100%;
     text-align: left;
     margin: 20px;
 }
 
-.game-details h1, .description h1, .role h1 {
+.details h1, .description h1, .role h1 {
     font-size: 28px;
     margin-bottom: 10px;
     color: rgb(67, 64, 90);
 }
-.game-details ul, .role ul {
+.details ul, .role ul {
     list-style-type: disc;
 }
-.game-details li, .role li, .role p {
+.details li, .role li, .description li, .role p {
     font-size: 24px;
     color: rgb(90, 97, 85);
     margin-bottom: 5px;
@@ -68,13 +69,30 @@ p {
     max-width: 100%;
     margin-top: 30px;
 }
-.game-details strong {
+.details strong {
     color: rgb(0, 0, 0);
 }
 
-.game-details a, .game-details a:visited {
+.description a:visited, .description a, .details a, .details a:visited {
     color: rgb(100, 130, 200);
     text-decoration: underline;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    margin-left: -10px;
+    margin-bottom: -4px;
+    image-rendering: pixelated;
+}
+
+.icon2 {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: -8px;
+    image-rendering: pixelated;
 }
 
 @media (max-aspect-ratio: 1) {
@@ -85,11 +103,11 @@ p {
     .short-description {
         font-size: 10px;
     }
-    .game-details h1, .description h1, .role h1 {
+    .details h1, .description h1, .role h1 {
         font-size: 20px;
         margin: 10px;
     }
-    .game-details li, .description p, .role li, .role p {
+    .details li, .description p, .role li, .role p {
         font-size: 16px;
     }
     .video-container {
