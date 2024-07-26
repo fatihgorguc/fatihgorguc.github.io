@@ -191,7 +191,6 @@ function selectCard(newCard) {
     if (window.innerWidth / window.innerHeight  < 1)
     {
         selectedCard.style.margin = '0 -50px';
-        console.log('mobile');
     }
     else
     {
@@ -240,8 +239,7 @@ function showTargetPage() {
     
     page.style.transition = 'transform 0.6s ease-out 0.15s';
     page.style.transform = 'translateY(200%)';
-
-    console.log(aspectRatio)
+    
     if (aspectRatio < 1) {
         pageBackground.src = 'images/Paper.gif';
     } 
