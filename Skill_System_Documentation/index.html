@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skill System Documentation</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="main-header">
+            <h1>Skill System</h1>
+            <h2>Documentation</h2>
+            <div>
+                <div class="icon-wrapper support">
+                    <img src="images/favicon.png" alt="Website Icon" class="icon">
+                    <span>Support</span>
+                </div>
+                <div class="icon-wrapper asset-store">
+                    <img src="images/favicon.png" alt="Website Icon" class="icon">
+                    <span>Asset Store</span>
+                </div>
+                <div class="icon-wrapper website" onclick="openInNewTab('https://fatihgorguc.com/')">
+                    <img src="images/favicon.png" alt="Website Icon" class="icon">
+                    <span>Website</span>
+                </div>
+            </div>
+        </header>
+        <div class ="page-content">
+            <div class="sidebar">
+                <h3 onclick="toggleSubmenu('menu1')">Overview</h3>
+                <ul id="menu1" class="submenu">
+                    <li><a href="index.html?page=pages/Overview/Introduction.html">Introduction</a></li>
+                    <li><a href="index.html?page=pages/Overview/How_to_install.html">How to install?</a></li>
+                    <li><a href="index.html?page=pages/Overview/Getting_started.html">Getting started</a></li>
+                </ul>
+                <h3 onclick="toggleSubmenu('menu2')">Base Concepts</h3>
+                <ul id="menu2" class="submenu">
+                    <li><a href="index.html?page=pages/Base_Concepts/Skill.html">Skill</a></li>
+                    <li><a href="index.html?page=pages/Base_Concepts/Action.html">Action</a></li>
+                    <li><a href="index.html?page=pages/Base_Concepts/Function.html">Function</a></li>
+                    <li><a href="index.html?page=pages/Base_Concepts/Variable.html">Variable</a></li>
+                    <li><a href="index.html?page=pages/Base_Concepts/Modifier.html">Modifier</a></li>
+                    <li><a href="index.html?page=pages/Base_Concepts/Dictionary.html">Dictionary</a></li>
+                </ul>
+                <h3 onclick="toggleSubmenu('menu3')">Functions</h3>
+                <ul id="menu3" class="submenu">
+                    <li><a href="#" onclick="loadContent('page3.html')">Animate function</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Instantiate function</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Destroy function</a></li>
+                </ul>
+                <h3 onclick="toggleSubmenu('menu4')">Variables</h3>
+                <ul id="menu4" class="submenu">
+                    <li><a href="#" onclick="loadContent('page3.html')">Move modifier</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Rotate modifier</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Add to dictionary modifier</a></li>
+                </ul>
+                <h3 onclick="toggleSubmenu('menu5')">Modifiers</h3>
+                <ul id="menu5" class="submenu">
+                    <li><a href="#" onclick="loadContent('page3.html')">Move modifier</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Rotate modifier</a></li>
+                    <li><a href="#" onclick="loadContent('page3.html')">Add to dictionary modifier</a></li>
+                </ul>
+            </div>
+            <div class="page-block">
+                <div class="content-area" id="content-area">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="background">
+            <div class="background-filter"></div>
+            <div class="background-vignette"></div>
+            <div class="page">
+                <img class="page-background" src="" alt="">
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

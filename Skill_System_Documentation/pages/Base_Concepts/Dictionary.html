@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skill System Documentation</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <h1>Skill</h1>
+        <p>
+            A skill is a core ability in your game that defines specific actions or behaviors that a character, entity, or player can perform. In the Skill System, a skill is composed of multiple actions, with each action defining part of the overall behavior of the skill. This modular design allows for great flexibility, enabling developers to easily modify, extend, and combine different actions to create complex abilities.
+        </p>
+
+        <h2>Creating a Skill</h2>
+        <p>
+            To create a skill, you begin by adding "SSSkill" component to a gameobject. You can then start editing skill settings and adding actions to the skill. Each action can then be customized with specific functions that control its behavior.
+        </p>
+
+        <pre><code>
+public class SSSkill {}
+</code></pre>
+        
+        <h2>Skill Settings</h2>
+        <p>
+            Skill settings can be edited to match the developer's needs.
+        </p>
+        <ul>
+            <li><strong>Actions:</strong> The individual tasks or steps that make up the skill. For example, in an attack skill, actions could include targeting, damage calculation, and applying effects.</li>
+            <li><strong>Functions:</strong> The specific operations that define each action’s behavior. Functions control how the skill behaves, such as dealing damage, triggering animations, or applying debuffs.</li>
+            <li><strong>Triggers:</strong> Conditions or events that activate the skill, such as user input, AI decisions, or in-game events.</li>
+        </ul>
+
+        
+        <h2>Managing Skills in Unity</h2>
+        <p>
+            Skills can be easily managed through the Skill Editor in Unity. The editor allows you to create, modify, and organize skills without writing code, offering a visual interface that simplifies the process. You can add new actions, adjust their properties, and assign functions directly through the Unity Inspector.
+        </p>
+        
+        <h2>Examples of Skills</h2>
+        <p>
+            - <strong>Basic Attack:</strong> A simple skill that deals damage to a target. It could consist of actions like targeting, calculating damage, and applying the damage effect.
+        </p>
+        <p>
+            - <strong>Healing Spell:</strong> A skill that restores health to an ally. Actions could include targeting the ally, calculating the healing amount, and applying the healing effect.
+        </p>
+    </body>
+</html>
