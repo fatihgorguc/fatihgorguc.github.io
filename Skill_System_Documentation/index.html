@@ -29,13 +29,13 @@
             <div class="sidebar">
                 <h3 onclick="toggleSubmenu('menu1')">Overview</h3>
                 <ul id="menu1" class="submenu">
-                    <li><a href="index.html?page=pages/Overview/Introduction.html">Introduction</a></li>
+                    <li><a href="#" onclick="loadContent('Overview/Introduction.html')">Introduction</a></li>
                     <li><a href="index.html?page=pages/Overview/How_to_install.html">How to install?</a></li>
                     <li><a href="index.html?page=pages/Overview/Getting_started.html">Getting started</a></li>
                 </ul>
                 <h3 onclick="toggleSubmenu('menu2')">Base Concepts</h3>
                 <ul id="menu2" class="submenu">
-                    <li><a href="index.html?page=pages/Base_Concepts/Skill.html">Skill</a></li>
+                    <li><a href="#" onclick="loadContent('Base_Concepts/Skill.html')">Skill</a></li>
                     <li><a href="index.html?page=pages/Base_Concepts/Action.html">Action</a></li>
                     <li><a href="index.html?page=pages/Base_Concepts/Function.html">Function</a></li>
                     <li><a href="index.html?page=pages/Base_Concepts/Variable.html">Variable</a></li>
@@ -62,8 +62,8 @@
                 </ul>
             </div>
             <div class="page-block">
-                <div class="content-area" id="content-area">
-                    
+                <div class="content-area">
+                    <iframe id="content-frame" src="pages/Overview/Introduction.html" width="100%" height="100%" style="border: none"></iframe>
                 </div>
             </div>
         </div>
