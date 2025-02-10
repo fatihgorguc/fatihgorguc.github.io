@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Action</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <h1 id="action">Action</h1>
+    <p>
+        An action represents a simple task within your <a href="/?page=pages/Base_Concepts/Skill.html" onclick="loadContent('pages/Base_Concepts/Skill.html'); return false">Skill</a>.
+        It is the move that your skill executes when it's played.
+        It contains multiple <a href="/?page=pages/Base_Concepts/Function.html" onclick="loadContent('pages/Base_Concepts/Function.html'); return false">Functions</a> which are executed sequentially when the action is triggered.
+    </p>
+
+    <h2 id="creating-action">Creating an Action</h2>
+    <p>
+        To create an action simply click the "Add Action" button in target SSSkill component.
+    </p>
+    <h2 id="removing-action">Removing an Action</h2>
+    <p>
+        To remove an action, click the title to open it, then press the "Remove Action" button.
+        To remove all actions, click the "Clear All Actions" button located in the top-right corner of the skill.
+    </p>
+
+    <h2 id="action-settings">Action Settings</h2>
+    <p>Action settings can be opened by clicking the action title and can be edited.</p>
+
+    <table>
+        <tr>
+            <th><span>Setting</span></th>
+            <th><span>Description</span></th>
+            <th><span>Default Value</span></th>
+        </tr>
+        <tr>
+            <td><span>Action name</span></td>
+            <td>The name of the action. It helps identify the action within the system. Doesn't affect the functionality.</td>
+            <td><span>"New Action"</span></td>
+        </tr>
+        <tr id="action-duration">
+            <td><span>Action duration</span></td>
+            <td>The duration of the action sets the target skill as already executing, preventing it from being played again.
+                The total duration is the sum of the delay of functions below and the specified value.</td>
+            <td><span>0 (min: 0)</span></td>
+        </tr>
+        <tr id="action-index-reset-delay">
+            <td><span>Action index reset delay</span></td>
+            <td>Only available in <a href="/?page=pages/Base_Concepts/Skill.html#chain-type" onclick="loadContent('pages/Base_Concepts/Skill.html#chain-type'); return false">Chain Type</a> of skills.
+                It resets the <a href="/?page=pages/Base_Concepts/Skill.html#action-index" onclick="loadContent('pages/Base_Concepts/Skill.html#action-index'); return false">Action Index</a> of target skill.
+                If this is left at a value less than the duration of the target action, the index will never exceed 0, preventing subsequent actions from being played.</td>
+            <td><span>0 (min: 0)</span></td>
+        </tr>
+    </table>
+
+    </body>
+</html>

@@ -9,12 +9,14 @@
     <body>
         <h1 id="skill">Skill</h1>
         <p>
-            A skill is a core ability in your game that defines specific actions or behaviors that a character, entity, or player can perform. In the Skill System, a skill is composed of multiple actions, with each action defining part of the overall behavior of the skill. This modular design allows for great flexibility, enabling developers to easily modify, extend, and combine different actions to create complex abilities.
+            A skill is a core ability in your game that defines specific actions and behaviors that a character or entity can perform.
+            In the Skill System, a skill is composed of multiple actions, with each action defining part of the overall behavior of the skill.
         </p>
 
         <h2 id="creating-skill">Creating a Skill</h2>
         <p>
-            To create a skill, add the SSSkill component to a GameObject. You can then start editing skill settings and adding actions to the skill. Each action can then be customized with specific functions that control its behavior.
+            To create a skill, add the SSSkill component to a GameObject. You can then start editing skill settings and adding actions to the skill.
+            Each action can then be customized with specific functions that control its behavior.
         </p>
 
         <pre><code>
@@ -50,9 +52,11 @@ public class SSSkill {}
                 <td>If enabled, the skill will ignore game speed multipliers and always execute in real-time.</td>
                 <td><span>false</span></td>
             </tr>
-            <tr>
+            <tr id="skill-speed">
                 <td><span>Skill speed</span></td>
-                <td>A multiplier that controls how fast the skill executes. Higher values make it faster.</td>
+                <td>A multiplier that determines the execution speed of the skill.
+                Higher values make it faster by reducing the <a href="/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> and
+                    <a href="/?page=pages/Base_Concepts/Function.html#function-delay" onclick="loadContent('pages/Base_Concepts/Function.html#function-delay'); return false">Function Delay</a>.</td>
                 <td><span>1</span></td>
             </tr>
             <tr>
@@ -67,7 +71,7 @@ public class SSSkill {}
             </tr>
             <tr>
                 <td><span>Add skill to dictionary</span></td>
-                <td>If enabled, the skill will be stored in the dictionary upon awakening.</td>
+                <td>If enabled, the skill will be stored in the <a href="/?page=pages/Base_Concepts/Dictionary.html" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a> upon awakening.</td>
                 <td><span>false</span></td>
             </tr>
             <tr>
@@ -76,18 +80,24 @@ public class SSSkill {}
                 <td><span>"" (empty)</span></td>
             </tr>
         </table>
+        
+        <h2 id="action-index">Action Index</h2>
+        <p>The action index specifies which action in a sequence will be played. It starts as "0" and will be increased when the target skill is executed.</p>
 
         <h2 id="skill-types">Skill Types</h2>
         <ul>
-            <li><span>Single:</span> These type of skills can only have one action and that action will be played when the skill is played. Every call consumes one charge.</li>
+            <li><span>Single:</span> These type of skills can only have one action and that action will be played when the skill is played. Action index is ignored. Every call consumes one charge.</li>
             <li><span>Random:</span> When the skill is played, one random action will be selected and played. Every call consumes one charge.</li>
-            <li><span>In Order:</span> The actions will be played in order. Every call consumes one charge.</li>
-            <li><span>Chain:</span> When the skill is played, first action is executed and the turn passes to the next one. But if the "Action index reset delay" resets the index, the turn passes to the first one. Every reset or executing all the actions consumes one charge.</li>
+            <li><span>In Order:</span> The actions will be played in order. Every call increases action index by one and consumes one charge.</li>
+            <li><span id="chain-type">Chain:</span> When the skill is played, first action is executed and action index is increased by one.
+                But, if the <a href="/?page=pages/Base_Concepts/Action.html#action-index-reset-delay" onclick="loadContent('pages/Base_Concepts/Action.html#action-index-reset-delay'); return false">Action Index Reset Delay</a>
+                time expires, action index resets to zero. Resetting action index or executing all the actions consumes one charge.</li>
         </ul>
         <h2 id="public-functions">Public Functions</h2>
         <p>
-            <span>- PlayNextAction()</span> This function triggers the next available action in the skill sequence, provided the skill has remaining charges and is not already executing.
-            It has one optional parameter, "speed",which changes the speed of the skill.
+            <span>- PlayNextAction()</span> This function triggers the next available action in the skill sequence, provided the skill has remaining charges and current
+            <a href="/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> has expired, meaning the action is no longer executing.
+            It also has one optional parameter that sets the <a href="#skill-speed">Speed</a> of the skill.
         </p>
 <pre><code>
 public class Player : MonoBehaviour

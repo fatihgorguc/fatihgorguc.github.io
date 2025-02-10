@@ -62,7 +62,7 @@ function setMissingCards() {
 }
 
 function createCardPlaceholders() {
-    let zIndex = 100; // En yüksek z-index değeri, ilk kart en üstte olacak şekilde
+    let zIndex = 100;
     
     missingCards.forEach((card) => {
         const cardPlaceholder = document.createElement('div');
@@ -74,7 +74,6 @@ function createCardPlaceholders() {
 
     const cardPlaceholders = document.querySelectorAll('.card-placeholder');
     
-    //cardPlaceholders animasyonunu başlat ve bitince sil
     cardPlaceholders.forEach((cardPlaceholder, index) => {
         setTimeout(() => {
             cardPlaceholder.classList.add('animate');
