@@ -1,64 +1,53 @@
-const contentArea = document.getElementById('content-area');
+const contentArea = document.querySelector('.content-area');
 
-function loadContent(page) {
-    // Update iframe content
-    document.getElementById('content-frame').src = `pages/${page}`;
+window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialPage = urlParams.get('page') || "pages/Overview/Introduction.html";
+    
+    loadContent(initialPage, false);
+};
 
-    // Update the browser URL without reloading the page
-    window.history.pushState({ page }, "", `/${page}`);
+
+function loadContent(page, addToHistory = true) {
+    fetch(page)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentArea.innerHTML = html;
+            
+            contentArea.scrollTop = 0;
+
+            if (addToHistory) {
+                window.history.pushState({ page }, "", `?page=${page}`);
+            }
+
+            const hash = window.location.hash;
+            
+            if (hash) {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+            else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        })
+        .catch(error => {
+            contentArea.innerHTML = `<p>Error loading content: ${error.message}</p>`;
+        });
 }
 
-// Handle back/forward navigation
-window.onpopstate = function (event) {
+
+window.addEventListener("popstate", (event) => {
     if (event.state && event.state.page) {
-        document.getElementById('content-frame').src = `pages/${event.state.page}`;
+        loadContent(event.state.page, false);
     }
-};
-
-// Load the correct page on first visit or refresh
-window.onload = function () {
-    const params = new URLSearchParams(window.location.search);
-    const page = params.get('page') || "Overview/Introduction.html";
-    loadContent(page);
-};
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const params = new URLSearchParams(window.location.search);
-//     const page = params.get("page");
-//     const hash = window.location.hash;
-//
-//     if (page) {
-//         loadContent(page + hash);
-//     } else {
-//         loadContent("pages/Overview/Introduction.html");
-//     }
-// });
-//
-//
-// window.onload = function () {
-//     const params = new URLSearchParams(window.location.search);
-//     const page = params.get('page');
-//     if (page) {
-//         loadContent(page);
-//     }
-// };
-//
-// function loadContent(htmlPath) {
-//     history.pushState(null, '', '?page=' + htmlPath);
-//     contentArea.src = htmlPath;
-//
-//     contentArea.onload = function () {
-//         const hash = htmlPath.split('#')[1];
-//         if (hash) {
-//             const doc = contentArea.contentDocument || contentArea.contentWindow.document;
-//             const targetElement = doc.getElementById(hash);
-//             if (targetElement) {
-//                 targetElement.scrollIntoView();
-//             }
-//         }
-//     };
-// }
-
+});
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);

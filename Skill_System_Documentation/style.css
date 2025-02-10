@@ -15,17 +15,19 @@
     --primary-color: rgba(20, 30, 35, 1);
     --secondary-color: rgba(244, 223, 189, 1);
     --highlight-color: rgba(234, 180, 57, 1);
+    --code-background-color: rgba(23,23,23, 1);
 }
 
 body, html {
     height: 100%;
     width: 100%;
     margin: 0;
-
     overflow: hidden;
     background-color: rgba(0,0,0,1);
 }
-
+html {
+    scroll-behavior: smooth;
+}
 
 .main-header {
     position: fixed;
@@ -262,6 +264,66 @@ body, html {
 
 .content-area{
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 100px); /* 100% width minus left (50px) and right (20px) margins */
+    height: calc(100% - 20px);
+    overflow: auto;
+    margin: 20px 50px;
+    font-size: 18px;
+    font-family: 'pixelclean', sans-serif;
+    text-align: left;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    color: var(--secondary-color);
+    scroll-behavior: smooth;
+}
+
+.content-area::-webkit-scrollbar {
+    display: none;
+}
+
+.content-area h1{
+    font-family: 'pixelbasic', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+.content-area h2 {
+    font-family: 'pixelclean', sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+.content-area li {
+    margin-left: -10px;
+}
+
+.content-area span {
+    font-size: 22px;
+    color: var(--highlight-color);
+}
+
+.content-area a {
+    color: var(--highlight-color);
+}
+
+.content-area pre code {
+    background-color: var(--code-background-color);
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 10px;
+    border: 1px solid var(--highlight-color);
+    display: block;
+}
+
+.content-area table {
+    background-color: var(--code-background-color);
+}
+
+.content-area th, td {
+    border: 1px solid var(--secondary-color);
+    padding: 8px;
+    border-radius: 3px;
 }
