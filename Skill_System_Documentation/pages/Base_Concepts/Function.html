@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <h1 id="function">Function</h1>
+        <p>
+            A function is the smallest executable unit within an <a href="/?page=pages/Base_Concepts/Action.html" onclick="loadContent('pages/Base_Concepts/Action.html'); return false">Action</a>.
+            Functions define the actual operations that occur when an action is executed.
+            These operations can include object instantiation, movement, event execution, and more.
+            See <a href="#function-types">Function Types</a> for a further explanation.
+        </p>
+        
+        <h2 id="creating-function">Creating a Function</h2>
+        <p>
+            To create a function, click the "Add Function" button inside the target action and select the desired function type.
+        </p>
+        
+        <h2 id="removing-function">Removing a Function</h2>
+        <p>
+            To remove a function, click the ✖ icon located in right side of the target function, or right-click and select remove.
+        </p>
+        
+        <h2 id="replacing-function">Replacing a Function</h2>
+        <p>
+            To replace a function, drag and drop the ≡ icon located in the top-left corner of the target function.
+        </p>
+
+        <h2 id="function-right-click-actions">Function Right-Click Actions</h2>
+        <p>Right-click a function to see the quick actions.</p>
+        <table>
+            <tr>
+                <th><span>Setting</span></th>
+                <th><span>Description</span></th>
+            </tr>
+            <tr>
+                <td><span>Copy</span></td>
+                <td>Copies the selected function, allowing it to be pasted elsewhere.</td>
+            </tr>
+            <tr>
+                <td><span>Paste</span></td>
+                <td>Pastes a previously copied function into the selected location.</td>
+            </tr>
+            <tr>
+                <td><span>Duplicate</span></td>
+                <td>Creates an exact copy of the selected function in the same location.</td>
+            </tr>
+            <tr>
+                <td><span>Reset</span></td>
+                <td>Restores the function to its default state, removing any modifications.</td>
+            </tr>
+            <tr>
+                <td><span>Remove</span></td>
+                <td>Deletes the function from the list.</td>
+            </tr>
+        </table>
+        
+        <h2 id="function-settings">Common Function Settings</h2>
+        <p>Function settings can be opened by clicking the function title and can be edited.</p>
+        
+        <table>
+            <tr>
+                <th><span>Setting</span></th>
+                <th><span>Description</span></th>
+                <th><span>Default Value</span></th>
+            </tr>
+            <tr id="function-delay">
+                <td><span>Function delay</span></td>
+                <td>Specifies the time before the function executes after the previous function.
+                    Also added to <a href="/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a>.</td>
+                <td><span>0 (min: 0)</span></td>
+            </tr>
+        </table>
+        
+        <h2 id="function-types">Function Types</h2>
+        <p>
+            There are various function types, each designed for a specific effect.
+        </p>
+        
+        <table>
+            <tr>
+                <th><span>Function</span></th>
+                <th><span>Description</span></th>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Animate_Function.html" onclick="loadContent('pages/Functions/Animate_Function.html'); return false">Animate Function</a></span></td>
+                <td>Plays an animation or sets a variable on the target animator.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Instantiate_Function.html" onclick="loadContent('pages/Functions/Instantiate_Function.html'); return false">Instantiate Function</a></span></td>
+                <td>Creates a new instance of a specified object in the scene.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Destroy_Function.html" onclick="loadContent('pages/Functions/Destroy_Function.html'); return false">Destroy Function</a></span></td>
+                <td>Removes a target object from the scene.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a></span></td>
+                <td>Moves the target object by a specified amount.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Rotate_Function.html" onclick="loadContent('pages/Functions/Rotate_Function.html'); return false">Rotate Function</a></span></td>
+                <td>Rotates the target object by a specified amount.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Skill_Function.html" onclick="loadContent('pages/Functions/Skill_Function.html'); return false">Skill Function</a></span></td>
+                <td>Triggers a specific skill execution.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/Event_Function.html" onclick="loadContent('pages/Functions/Event_Function.html'); return false">Event Function</a></span></td>
+                <td>Invokes an event, such as triggering external logic or behaviors.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/VisualFX_Function.html" onclick="loadContent('pages/Functions/VisualFX_Function.html'); return false">Visual Effect Function</a></span></td>
+                <td>Plays a visual effect, such as particle systems.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Functions/SoundFx_Function.html" onclick="loadContent('pages/Functions/SoundFx_Function.html'); return false">Sound Effect Function</a></span></td>
+                <td>Plays an audio source.</td>
+            </tr>
+        </table>
+    </body>
+</html>

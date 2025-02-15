@@ -85,14 +85,30 @@ public class SSSkill {}
         <p>The action index specifies which action in a sequence will be played. It starts as "0" and will be increased when the target skill is executed.</p>
 
         <h2 id="skill-types">Skill Types</h2>
-        <ul>
-            <li><span>Single:</span> These type of skills can only have one action and that action will be played when the skill is played. Action index is ignored. Every call consumes one charge.</li>
-            <li><span>Random:</span> When the skill is played, one random action will be selected and played. Every call consumes one charge.</li>
-            <li><span>In Order:</span> The actions will be played in order. Every call increases action index by one and consumes one charge.</li>
-            <li><span id="chain-type">Chain:</span> When the skill is played, first action is executed and action index is increased by one.
-                But, if the <a href="/?page=pages/Base_Concepts/Action.html#action-index-reset-delay" onclick="loadContent('pages/Base_Concepts/Action.html#action-index-reset-delay'); return false">Action Index Reset Delay</a>
-                time expires, action index resets to zero. Resetting action index or executing all the actions consumes one charge.</li>
-        </ul>
+        <table>
+            <tr>
+                <th><span>Type</span></th>
+                <th><span>Description</span></th>
+            </tr>
+            <tr>
+                <td><span>Single</span></td>
+                <td>These skills can only have one action, which is executed immediately when the skill is played. Action index is ignored. Every call consumes one charge.</td>
+            </tr>
+            <tr>
+                <td><span>Random</span></td>
+                <td>When the skill is played, one random action is selected and executed. Every call consumes one charge.</td>
+            </tr>
+            <tr>
+                <td><span>In Order</span></td>
+                <td>Actions are executed sequentially. Each call increases the action index by one and consumes one charge.</td>
+            </tr>
+            <tr>
+                <td><span id="chain-type">Chain</span></td>
+                <td>When the skill is played, the first action is executed, and the action index is increased by one. If the
+                    <a href="/?page=pages/Base_Concepts/Action.html#reset-action-index-delay" onclick="loadContent('pages/Base_Concepts/Action.html#reset-action-index-delay'); return false">Reset Action Index Delay</a>
+                    expires, the action index resets to zero. Resetting the action index or executing all actions consumes one charge.</td>
+            </tr>
+        </table>
         <h2 id="public-functions">Public Functions</h2>
         <p>
             <span>- PlayNextAction()</span> This function triggers the next available action in the skill sequence, provided the skill has remaining charges and current

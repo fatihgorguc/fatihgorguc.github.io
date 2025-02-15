@@ -27,14 +27,14 @@
         </header>
         <div class ="page-content">
             <div class="sidebar">
-                <h3 onclick="toggleSubmenu('menu1')">Overview</h3>
-                <ul id="menu1" class="submenu">
+                <h3 onclick="toggleSubmenu('overview')">Overview</h3>
+                <ul id="overview" class="submenu">
                     <li><a href="#" onclick="loadContent('pages/Overview/Introduction.html'); return false">Introduction</a></li>
                     <li><a href="#" onclick="loadContent('pages/Overview/How_To_Install.html'); return false">How to install?</a></li>
                     <li><a href="#" onclick="loadContent('pages/Overview/Getting_Started.html'); return false">Getting started</a></li>
                 </ul>
-                <h3 onclick="toggleSubmenu('menu2')">Base Concepts</h3>
-                <ul id="menu2" class="submenu">
+                <h3 onclick="toggleSubmenu('base-concepts')">Base Concepts</h3>
+                <ul id="base-concepts" class="submenu">
                     <li><a href="#" onclick="loadContent('pages/Base_Concepts/Skill.html'); return false">Skill</a></li>
                     <li><a href="#" onclick="loadContent('pages/Base_Concepts/Action.html'); return false">Action</a></li>
                     <li><a href="#" onclick="loadContent('pages/Base_Concepts/Function.html'); return false">Function</a></li>
@@ -42,20 +42,27 @@
                     <li><a href="#" onclick="loadContent('pages/Base_Concepts/Modifier.html'); return false">Modifier</a></li>
                     <li><a href="#" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a></li>
                 </ul>
-                <h3 onclick="toggleSubmenu('menu3')">Functions</h3>
-                <ul id="menu3" class="submenu">
-                    <li><a href="#" onclick="loadContent('page3.html')">Animate function</a></li>
-                    <li><a href="#" onclick="loadContent('page3.html')">Instantiate function</a></li>
-                    <li><a href="#" onclick="loadContent('page3.html')">Destroy function</a></li>
+                <h3 onclick="toggleSubmenu('functions')">Functions</h3>
+                <ul id="functions" class="submenu">
+                    <li><a href="#" onclick="loadContent('pages/Functions/Animate_Function.html'); return false">Animate function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Instantiate_Function.html'); return false">Instantiate function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Destroy_Function.html'); return false">Destroy function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Rotate_Function.html'); return false">Rotate function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Skill_Function.html'); return false">Skill function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/Event_Function.html'); return false">Event function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/VisualFX_Function.html'); return false">Visual effect function</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Functions/SoundFX_Function.html'); return false">Sound effect function</a></li>
                 </ul>
-                <h3 onclick="toggleSubmenu('menu4')">Variables</h3>
-                <ul id="menu4" class="submenu">
-                    <li><a href="#" onclick="loadContent('page3.html')">Move modifier</a></li>
-                    <li><a href="#" onclick="loadContent('page3.html')">Rotate modifier</a></li>
-                    <li><a href="#" onclick="loadContent('page3.html')">Add to dictionary modifier</a></li>
+                <h3 onclick="toggleSubmenu('variables')">Variables</h3>
+                <ul id="variables" class="submenu">
+                    <li><a href="#" onclick="loadContent('pages/Variables/Transform.html'); return false">Transform</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></li>
+                    <li><a href="#" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></li>
                 </ul>
-                <h3 onclick="toggleSubmenu('menu5')">Modifiers</h3>
-                <ul id="menu5" class="submenu">
+                <h3 onclick="toggleSubmenu('modifiers')">Modifiers</h3>
+                <ul id="modifiers" class="submenu">
                     <li><a href="#" onclick="loadContent('page3.html')">Move modifier</a></li>
                     <li><a href="#" onclick="loadContent('page3.html')">Rotate modifier</a></li>
                     <li><a href="#" onclick="loadContent('page3.html')">Add to dictionary modifier</a></li>

@@ -232,6 +232,12 @@ html {
     text-align: left;
     z-index: 20;
     transition: top 0.3s ease;
+    max-height: calc(100% - 60px);
+    overflow: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar h3 {
@@ -320,6 +326,7 @@ html {
 
 .content-area table {
     background-color: var(--code-background-color);
+    width: 100%;
 }
 
 .content-area th, td {

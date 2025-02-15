@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Variable</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="variable">Variable</h1>
+        <p>
+            A variable is a structured data type used to retrieve values dynamically. Unlike static values, variables provide flexibility by fetching data based on predefined conditions.
+            A variable can return a default value, retrieve a reference value, or obtain data stored in the dictionary.
+        </p>
+        
+        <h2 id="variable-methods">Variable Methods</h2>
+        <p>
+            Variables support multiple retrieval methods:
+        </p>
+        <table>
+            <tr>
+                <th><span>Type</span></th>
+                <th><span>Description</span></th>
+            </tr>
+            <tr>
+                <td><span>By Value</span></td>
+                <td>Uses a predefined static value.</td>
+            </tr>
+            <tr>
+                <td><span>By Reference</span></td>
+                <td>Fetches the value from a referenced object.</td>
+            </tr>
+            <tr>
+                <td><span>By Dictionary Key</span></td>
+                <td>Retrieves the value from the <a href="/?page=pages/Base_Concepts/Dictionary.html" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a> using a specified dictionary key.</td>
+            </tr>
+        </table>
+        
+        <h2 id="modifying-variable">Modifying a Variable</h2>
+        <p>
+            Variables can be modified through a series of <a href="/?page=pages/Base_Concepts/Modifier.html" onclick="loadContent('pages/Base_Concepts/Modifier.html'); return false">Modifiers</a>.
+            Modifiers apply transformations such as arithmetic operations and rotations to the retrieved value.
+        </p>
+
+        <h2 id="variable-types">Variable Types</h2>
+        <p>
+            There are multiple type of variables.
+        </p>
+        <table>
+            <tr>
+                <th><span>Type</span></th>
+                <th><span>Description</span></th>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Variables/Transform.html" onclick="loadContent('pages/Variables/Transform.html'); return false">Transform</a></span></td>
+                <td>Represents a reference to an object's transform, allowing access to position, rotation, and scale.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></span></td>
+                <td>Stores a three-dimensional vector, commonly used for position, direction, or scale calculations.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></span></td>
+                <td>Represents a rotation in 3D space, useful for handling orientation without gimbal lock.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></span></td>
+                <td>Holds a floating-point number, commonly used for calculations such as speed or time values.</td>
+            </tr>
+        </table>
+    </body>
+</html>
