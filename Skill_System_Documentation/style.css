@@ -249,9 +249,9 @@ html {
 
 .submenu {
     color: var(--secondary-color);
-    height: 0;
+    max-height: 0;
     overflow: hidden;
-    transition: height 0.3s ease;
+    transition: max-height 0.3s ease;
 }
 
 .submenu li {

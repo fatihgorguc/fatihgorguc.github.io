@@ -3,46 +3,162 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skill System Documentation</title>
-        <link rel="stylesheet" href="../style.css">
+        <title>Dictionary</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Skill</h1>
+        <h1 id="dictionary">Dictionary</h1>
         <p>
-            A skill is a core ability in your game that defines specific actions or behaviors that a character, entity, or player can perform. In the Skill System, a skill is composed of multiple actions, with each action defining part of the overall behavior of the skill. This modular design allows for great flexibility, enabling developers to easily modify, extend, and combine different actions to create complex abilities.
+            The Dictionary is a system used to store and retrieve variables dynamically by key names.
+            It allows flexible data handling within the skill system.
         </p>
-
-        <h2>Creating a Skill</h2>
+        
+        <h2 id="how-to-use">How to Use</h2>
         <p>
-            To create a skill, you begin by adding "SSSkill" component to a gameobject. You can then start editing skill settings and adding actions to the skill. Each action can then be customized with specific functions that control its behavior.
+            The Dictionary enables storing and retrieving variables by their assigned key names.
+            Variables stored in the Dictionary can be accessed by other components at runtime.
+        </p>
+        
+<pre><code>
+public class PlayerStats : MonoBehaviour
+{
+    private float moveSpeed = 5f;
+            
+    private void Start()
+    {
+        SSStaticDictionary.Add("playerSpeed" moveSpeed);
+    }
+}
+</code></pre>
+
+<pre><code>
+public class Player : MonoBehaviour
+{
+    private float speed;
+    
+    private void SetSpeed()
+    {
+        speed = SSStaticDictionary.Get&lt;float&gt;(playerSpeed);
+    }
+}
+</code></pre>
+        
+        <h2 id="public-functions">Public Functions</h2>
+
+        <p>
+            <span>- Add(key, value)</span> This function saves the specified value with the given key only if no object is already saved with that key.
+        </p>
+        
+        <pre><code>
+public class PlayerStats : MonoBehaviour
+{
+    private float moveSpeed = 5f;
+            
+    private void Start()
+    {
+        SSStaticDictionary.Add("playerSpeed" moveSpeed);
+    }
+}
+</code></pre>
+
+        <p>
+            <span>- ForceAdd(key, value)</span> This function saves the specified value with the given key even if an object is already saved with the same key, overriding the previous value.
         </p>
 
         <pre><code>
-public class SSSkill {}
+public class PlayerStats : MonoBehaviour
+{
+    private float moveSpeed = 5f;
+            
+    private void Start()
+    {
+        SSStaticDictionary.ForceAdd("playerSpeed" moveSpeed);
+    }
+}
 </code></pre>
-        
-        <h2>Skill Settings</h2>
-        <p>
-            Skill settings can be edited to match the developer's needs.
-        </p>
-        <ul>
-            <li><strong>Actions:</strong> The individual tasks or steps that make up the skill. For example, in an attack skill, actions could include targeting, damage calculation, and applying effects.</li>
-            <li><strong>Functions:</strong> The specific operations that define each action’s behavior. Functions control how the skill behaves, such as dealing damage, triggering animations, or applying debuffs.</li>
-            <li><strong>Triggers:</strong> Conditions or events that activate the skill, such as user input, AI decisions, or in-game events.</li>
-        </ul>
 
-        
-        <h2>Managing Skills in Unity</h2>
         <p>
-            Skills can be easily managed through the Skill Editor in Unity. The editor allows you to create, modify, and organize skills without writing code, offering a visual interface that simplifies the process. You can add new actions, adjust their properties, and assign functions directly through the Unity Inspector.
+            <span>- Get&lt;T&gt;(key)</span> This function returns the value of type T associated with the given key. If the key does not exist, it throws an exception.
         </p>
-        
-        <h2>Examples of Skills</h2>
+
+        <pre><code>
+public class Player : MonoBehaviour
+{
+    private float speed;
+    
+    private void SetSpeed()
+    {
+        speed = SSStaticDictionary.Get&lt;float&gt;(playerSpeed);
+    }
+}
+</code></pre>
+
         <p>
-            - <strong>Basic Attack:</strong> A simple skill that deals damage to a target. It could consist of actions like targeting, calculating damage, and applying the damage effect.
+            <span>- TryGet&lt;T&gt;(key, out value, throwOnFailure)</span> This function returns a boolean indicating whether a value exists for the given key.
+            It also outputs the value, with an optional parameter to throw an exception if it returns false.
         </p>
+
+        <pre><code>
+public class Player : MonoBehaviour
+{
+    private float speed;
+    
+    private void SetSpeed()
+    {
+        if (SSStaticDictionary
+            .TryGet&lt;float&gt;(playerSpeed, out playerSpeed))
+        {
+            speed = playerSpeed;
+        }
+    }
+}
+</code></pre>
+
+
         <p>
-            - <strong>Healing Spell:</strong> A skill that restores health to an ally. Actions could include targeting the ally, calculating the healing amount, and applying the healing effect.
+            <span>- ContainsKey(key)</span> This function checks if an object exists with the specified key and returns a boolean indicating whether the key is present in the dictionary.
         </p>
+
+        <pre><code>
+public class Player : MonoBehaviour
+{
+    private float speed;
+    
+    private void SetSpeed()
+    {
+        if (SSStaticDictionary.ContainsKey(playerSpeed))
+        {
+            SSStaticDictionary.Add("playerMoveSpeed" speed);
+        }
+        else
+        {
+            SSStaticDictionary.Add("playerSpeed" speed);
+        }
+    }
+}
+</code></pre>
+
+        <p>
+            <span>- Clear()</span> This function removes all objects from the dictionary, effectively clearing it.
+        </p>
+
+        <pre><code>
+public class Player : MonoBehaviour
+{
+    private void ClearDictionary()
+    {
+        SSStaticDictionary.Clear();
+    }
+}
+</code></pre>
+
+        <p>
+            <span>- GetAllKeys()</span> This function returns an enumerable collection of all the keys currently stored in the dictionary.
+        </p>
+
+        <p>
+            <span>- GetAllValues()</span> This function returns an enumerable collection of all the values currently stored in the dictionary.
+        </p>
+    
     </body>
 </html>

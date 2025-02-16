@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modifier</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="modifier">Modifier</h1>
+        <p>
+            A modifier is an operation that alters a variable's value. It allows dynamic modifications such as arithmetic transformations, rotations, and other mathematical operations.
+            Modifiers are applied in sequence, meaning the final value is a cumulative result of all applied modifications.
+        </p>
+        
+        <h2 id="modifier-application">How Modifiers Work</h2>
+        <p>
+            When a variable is retrieved, it can be modified by an ordered list of modifiers before returning the final value.
+            Each modifier applies a transformation based on its type and parameters.
+        </p>
+        
+        <h2 id="modifier-order">Modifier Order</h2>
+        <p>
+            The order in which modifiers are applied is crucial. Since modifications stack, changing the sequence of modifiers can lead to different final values.
+            For example, applying an <b>Add</b> operation before a <b>Multiply</b> will yield different results compared to applying them in the reverse order.
+        </p>
+        
+        <h2 id="modifier-types">Modifier Types</h2>
+        <p>
+            Different types of modifiers are available, each performing a specific operation on the variable.
+        </p>
+        <table>
+            <tr>
+                <th><span>Type</span></th>
+                <th><span>Description</span></th>
+                <th><span>Target Variables</span></th>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Add.html" onclick="loadContent('pages/Modifiers/Add.html'); return false">Add</a></span></td>
+                <td>Adds a provided value to the variable.</td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Move.html" onclick="loadContent('pages/Modifiers/Move.html'); return false">Move</a></span></td>
+                <td>Moves the target variable by a specified Vector3 value.</td>
+                <td><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Multiply.html" onclick="loadContent('pages/Modifiers/Multiply.html'); return false">Multiply</a></span></td>
+                <td>Multiplies the target variable by a given factor.</td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a>,
+                    <a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a>,
+                    <a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Normalize.html" onclick="loadContent('pages/Modifiers/Normalize.html'); return false">Normalize</a></span></td>
+                <td>Normalizes the target variable to unit length.</td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a>,
+                    <a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a>,
+                    <a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Randomize.html" onclick="loadContent('pages/Modifiers/Randomize.html'); return false">Randomize</a></span></td>
+                <td>Applies randomization to the target variable within a defined range.</td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a>,
+                    <a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a>,
+                    <a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Rotate.html" onclick="loadContent('pages/Modifiers/Rotate.html'); return false">Rotate</a></span></td>
+                <td>Rotates the target variable by a specified Quaternion or Euler angles.</td>
+                <td><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a>,
+                    <a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/RotateTowardsVector.html" onclick="loadContent('pages/Modifiers/RotateTowardsVector.html'); return false">Rotate Towards Vector</a></span></td>
+                <td>Rotates the target quaternion towards a specified direction vector.</td>
+                <td><a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/SaveToDictionary.html" onclick="loadContent('pages/Modifiers/SaveToDictionary.html'); return false">Save to Dictionary</a></span></td>
+                <td>Stores the modified variable into the <a href="/?page=pages/Base_Concepts/Dictionary.html" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a> for later retrieval.</td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a>,
+                    <a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a>,
+                    <a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>

@@ -51,12 +51,11 @@ window.addEventListener("popstate", (event) => {
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
-    let currentHeight = window.getComputedStyle(submenu).height;
-    
-    if (currentHeight != "0px") {
-        submenu.style.height = "0px";
+
+    if (submenu.style.maxHeight) {
+        submenu.style.maxHeight = null;
     } else {
-        submenu.style.height = (submenu.children.length * 27).toString() + "px";
+        submenu.style.maxHeight = submenu.scrollHeight + "px";
     }
 }
 
