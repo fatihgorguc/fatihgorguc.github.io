@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Animate Function</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="animate-function">Animate Function</h1>
+        <p>
+            Animate function is responsible for controlling animations using an animator component. It provides different animation actions such as playing an animation, setting triggers, booleans, integers, floats, and speed.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Target Animator</span></td>
+                <td>Animator</td>
+                <td>The Animator component to control.</td>
+            </tr>
+            <tr>
+                <td><span>Animate Type</span></td>
+                <td>Enum</td>
+                <td>Defines the type of animation action to perform. See <a href="#animate-types">Animate Types</a> for more details.</td>
+            </tr>
+            <tr>
+                <td><span>Parameter Name</span></td>
+                <td>String</td>
+                <td>The name of the animation parameter.</td>
+            </tr>
+            <tr id="cross-fade">
+                <td><span>Cross-Fade Time</span></td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+                <td>Time to blend into the animation (only for Play type).</td>
+            </tr>
+            <tr>
+                <td><span>Trigger Value</span></td>
+                <td>Bool</td>
+                <td>Determines whether to set or reset the trigger.</td>
+            </tr>
+            <tr>
+                <td><span>Bool Value</span></td>
+                <td>Bool</td>
+                <td>Value to set for the boolean parameter.</td>
+            </tr>
+            <tr>
+                <td><span>Integer Value</span></td>
+                <td>Integer</td>
+                <td>Value to set for the integer parameter.</td>
+            </tr>
+            <tr>
+                <td><span>Float Value</span></td>
+                <td>Float</td>
+                <td>Value to set for the float parameter.</td>
+            </tr>
+            <tr>
+                <td><span>Speed Value</span></td>
+                <td><a href="/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+                <td>New speed for the Animator component.</td>
+            </tr>
+        </table>
+
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            The Animate function allows interaction with an Animator component by performing various animation-related actions.
+            Depending on the selected animation type, this function can play an animation, set a trigger, modify animation parameters, or change playback speed.
+        </p>
+        
+        <h2 id="animate-types">Animate Types</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Play</span></td>
+                <td>Plays the specified animation. If a <a href="#cross-fade">Cross-Fade</a> time is provided, it blends into the animation smoothly.</td>
+            </tr>
+            <tr>
+                <td><span>SetTrigger</span></td>
+                <td>Sets or resets the trigger parameter in the Animator.</td>
+            </tr>
+            <tr>
+                <td><span>SetBool</span></td>
+                <td>Changes the value of a boolean parameter in the Animator.</td>
+            </tr>
+            <tr>
+                <td><span>SetInteger</span></td>
+                <td>Sets an integer parameter in the Animator to a specified value.</td>
+            </tr>
+            <tr>
+                <td><span>SetFloat</span></td>
+                <td>Sets a float parameter in the Animator to a specified value.</td>
+            </tr>
+            <tr>
+                <td><span>SetSpeed</span></td>
+                <td>Modifies the playback speed of the Animator.</td>
+            </tr>
+        </table>
+    </body>
+</html>

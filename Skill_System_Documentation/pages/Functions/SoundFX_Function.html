@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound FX Function</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="sound-fx-function">Sound FX Function</h1>
+<p>
+    The Sound FX function is responsible for controlling an AudioSource component.
+    It allows playing, pausing, or stopping a sound dynamically.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>SFX Type</span></td>
+        <td>Enum</td>
+        <td>Defines the action to perform on the AudioSource. See <a href="#sfx-types">SFX Types</a> for more details.</td>
+    </tr>
+    <tr>
+        <td><span>Audio Source</span></td>
+        <td>AudioSource</td>
+        <td>The AudioSource component to control.</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    When executed, this function interacts with the assigned AudioSource.
+    The function allows for playing, pausing, or stopping the sound effect
+    based on the selected SFX Type.
+</p>
+
+<h2 id="sfx-types">SFX Types</h2>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Play</span></td>
+        <td>Plays the sound effect from the assigned AudioSource.</td>
+    </tr>
+    <tr>
+        <td><span>Pause</span></td>
+        <td>Pauses the AudioSource, keeping the sound at its current position.</td>
+    </tr>
+    <tr>
+        <td><span>Stop</span></td>
+        <td>Stops the AudioSource and resets the sound position.</td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Instantiate Function</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="instantiate-function">Instantiate Function</h1>
+        <p>
+            The Instantiate function is used to create a new instance of a GameObject at a specified position and rotation, with an optional parent transform.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Object to Instantiate</span></td>
+                <td>GameObject</td>
+                <td>The GameObject to be instantiated.</td>
+            </tr>
+            <tr>
+                <td><span>Parent Transform</span></td>
+                <td>Transform</td>
+                <td>The Transform that will be set as the parent of the instantiated object. (Optional)</td>
+            </tr>
+            <tr>
+                <td><span>Position</span></td>
+                <td><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+                <td>The position where the GameObject will be instantiated.</td>
+            </tr>
+            <tr>
+                <td><span>Rotation</span></td>
+                <td><a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+                <td>The rotation of the instantiated GameObject.</td>
+            </tr>
+            <tr>
+                <td><span>Save Object to Dictionary</span></td>
+                <td>Boolean</td>
+                <td>Determines whether the instantiated object should be stored in the dictionary.</td>
+            </tr>
+            <tr>
+                <td><span>Dictionary Key Name</span></td>
+                <td>String</td>
+                <td>The key under which the object will be stored in the dictionary.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            When executed, this function instantiates the specified GameObject at the given position and rotation.
+            If a parent transform is provided, the instantiated object will be parented to it.
+            Additionally, if "Save Object to Dictionary" is enabled, the instantiated object will be stored in the dictionary with the provided key name.
+        </p>
+    </body>
+</html>

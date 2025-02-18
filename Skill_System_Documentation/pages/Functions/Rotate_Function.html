@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Move Function</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="rotate-function">Rotate Function</h1>
+        <p>
+            The Rotate function is responsible for modifying an object's rotation or angular velocity.
+            It supports different rotation types, allowing you to set rotation, add rotation,
+            set torque, or apply torque to a Rigidbody component.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Rotate Type</span></td>
+                <td>Enum</td>
+                <td>Defines the type of rotation action to perform. See <a href="#rotate-types">Rotate Types</a> for more details.</td>
+            </tr>
+            <tr>
+                <td><span>Target Transform</span></td>
+                <td>Transform</td>
+                <td>The Transform component of the object to modify.</td>
+            </tr>
+            <tr>
+                <td><span>Target Rigidbody</span></td>
+                <td>Rigidbody</td>
+                <td>The Rigidbody component to apply rotational force or torque.</td>
+            </tr>
+            <tr>
+                <td><span>Rotation</span></td>
+                <td><a href="/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
+                <td>The rotation value used for SetRotation and AddRotation.</td>
+            </tr>
+            <tr>
+                <td><span>Vector</span></td>
+                <td><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+                <td>The vector value used for SetTorque and AddTorque.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            The Rotate function allows manipulation of an object's rotation either through direct transformation changes or physics-based torque.
+            Depending on the selected Rotate Type, the function can:
+        </p>
+        <ul>
+            <li>Set an object's rotation to a specific value.</li>
+            <li>Add a rotation to the object's current rotation.</li>
+            <li>Directly set the angular velocity of a Rigidbody.</li>
+            <li>Apply torque to a Rigidbody for physics-based rotation.</li>
+        </ul>
+        
+        <h2 id="rotate-types">Rotate Types</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>SetRotation</span></td>
+                <td>Directly sets the target object's rotation to the specified quaternion value.</td>
+            </tr>
+            <tr>
+                <td><span>AddRotation</span></td>
+                <td>Multiplies the target object's current rotation with the specified quaternion, effectively adding rotation.</td>
+            </tr>
+            <tr>
+                <td><span>SetTorque</span></td>
+                <td>Directly sets the Rigidbody's angular velocity to the specified vector.</td>
+            </tr>
+            <tr>
+                <td><span>AddTorque</span></td>
+                <td>Applies a torque force to the Rigidbody using the specified vector, influencing its rotation over time.</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual FX Function</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="visual-fx-function">Visual FX Function</h1>
+<p>
+    The Visual FX function is responsible for controlling a Particle System component.
+    It allows playing, pausing, or stopping a visual effect dynamically.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>VFX Type</span></td>
+        <td>Enum</td>
+        <td>Defines the action to perform on the Particle System. See <a href="#vfx-types">VFX Types</a> for more details.</td>
+    </tr>
+    <tr>
+        <td><span>Particle System</span></td>
+        <td>ParticleSystem</td>
+        <td>The Particle System component to control.</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    When executed, this function interacts with the assigned Particle System.
+    The function allows for starting, pausing, or stopping the visual effect
+    based on the selected VFX Type.
+</p>
+
+<h2 id="vfx-types">VFX Types</h2>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Play</span></td>
+        <td>Starts the Particle System, playing the visual effect.</td>
+    </tr>
+    <tr>
+        <td><span>Pause</span></td>
+        <td>Pauses the Particle System, keeping the effect in place.</td>
+    </tr>
+    <tr>
+        <td><span>Stop</span></td>
+        <td>Stops the Particle System, clearing all active particles.</td>
+    </tr>
+</table>
+</body>
+</html>

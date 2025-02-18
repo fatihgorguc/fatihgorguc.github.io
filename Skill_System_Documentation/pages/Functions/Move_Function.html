@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Move Function</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="move-function">Move Function</h1>
+        <p>
+            The Move function is responsible for modifying an object's position or velocity.
+            It supports different movement types, allowing you to set position, add position,
+            set velocity, or apply force to a Rigidbody component.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Move Type</span></td>
+                <td>Enum</td>
+                <td>Defines the type of movement to apply. See <a href="#move-types">Move Types</a> for more details.</td>
+            </tr>
+            <tr>
+                <td><span>Target Transform</span></td>
+                <td>Transform</td>
+                <td>The Transform component of the object to move. Used in SetPosition and AddPosition.</td>
+            </tr>
+            <tr>
+                <td><span>Target Rigidbody</span></td>
+                <td>Rigidbody</td>
+                <td>The Rigidbody component of the object to modify. Used in SetVelocity and AddForce.</td>
+            </tr>
+            <tr>
+                <td><span>Vector</span></td>
+                <td><a href="/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+                <td>The vector value used for movement.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            The Move function applies movement in different ways depending on the selected Move Type.
+            It can set an absolute position, add an offset to the current position, set a Rigidbody's velocity,
+            or apply force to a Rigidbody. This allows for both kinematic and physics-based movement.
+        </p>
+        
+        <h2 id="move-types">Move Types</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>SetPosition</span></td>
+                <td>Moves the object to the specified position.</td>
+            </tr>
+            <tr>
+                <td><span>AddPosition</span></td>
+                <td>Offsets the object's current position by the given vector.</td>
+            </tr>
+            <tr>
+                <td><span>SetVelocity</span></td>
+                <td>Directly sets the velocity of the Rigidbody to the given vector.</td>
+            </tr>
+            <tr>
+                <td><span>AddForce</span></td>
+                <td>Applies force to the Rigidbody using the given vector.</td>
+            </tr>
+        </table>
+    </body>
+</html>
