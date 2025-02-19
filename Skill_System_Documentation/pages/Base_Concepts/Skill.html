@@ -55,8 +55,8 @@ public class SSSkill {}
             <tr id="skill-speed">
                 <td><span>Skill speed</span></td>
                 <td>A multiplier that determines the execution speed of the skill.
-                Higher values make it faster by reducing the <a href="/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> and
-                    <a href="/?page=pages/Base_Concepts/Function.html#function-delay" onclick="loadContent('pages/Base_Concepts/Function.html#function-delay'); return false">Function Delay</a>.</td>
+                Higher values make it faster by reducing the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> and
+                    <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Function.html#function-delay" onclick="loadContent('pages/Base_Concepts/Function.html#function-delay'); return false">Function Delay</a>.</td>
                 <td><span>1</span></td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@ public class SSSkill {}
             </tr>
             <tr>
                 <td><span>Add skill to dictionary</span></td>
-                <td>If enabled, the skill will be stored in the <a href="/?page=pages/Base_Concepts/Dictionary.html" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a> upon awakening.</td>
+                <td>If enabled, the skill will be stored in the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Dictionary.html" onclick="loadContent('pages/Base_Concepts/Dictionary.html'); return false">Dictionary</a> upon awakening.</td>
                 <td><span>false</span></td>
             </tr>
             <tr>
@@ -105,14 +105,14 @@ public class SSSkill {}
             <tr>
                 <td><span id="chain-type">Chain</span></td>
                 <td>When the skill is played, the first action is executed, and the action index is increased by one. If the
-                    <a href="/?page=pages/Base_Concepts/Action.html#reset-action-index-delay" onclick="loadContent('pages/Base_Concepts/Action.html#reset-action-index-delay'); return false">Reset Action Index Delay</a>
+                    <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Action.html#reset-action-index-delay" onclick="loadContent('pages/Base_Concepts/Action.html#reset-action-index-delay'); return false">Reset Action Index Delay</a>
                     expires, the action index resets to zero. Resetting the action index or executing all actions consumes one charge.</td>
             </tr>
         </table>
         <h2 id="public-functions">Public Functions</h2>
         <p>
             <span>- PlayNextAction()</span> This function triggers the next available action in the skill sequence, provided the skill has remaining charges and current
-            <a href="/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> has expired, meaning the action is no longer executing.
+            <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> has expired, meaning the action is no longer executing.
             It also has one optional parameter that sets the <a href="#skill-speed">Speed</a> of the skill.
         </p>
 <pre><code>

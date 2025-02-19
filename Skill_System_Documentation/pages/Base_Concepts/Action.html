@@ -9,9 +9,9 @@
     <body>
     <h1 id="action">Action</h1>
     <p>
-        An action represents a simple task within your <a href="/?page=pages/Base_Concepts/Skill.html" onclick="loadContent('pages/Base_Concepts/Skill.html'); return false">Skill</a>.
+        An action represents a simple task within your <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html" onclick="loadContent('pages/Base_Concepts/Skill.html'); return false">Skill</a>.
         It is the move that your skill executes when it's played.
-        It contains multiple <a href="/?page=pages/Base_Concepts/Function.html" onclick="loadContent('pages/Base_Concepts/Function.html'); return false">Functions</a> which are executed sequentially when the action is triggered.
+        It contains multiple <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Function.html" onclick="loadContent('pages/Base_Concepts/Function.html'); return false">Functions</a> which are executed sequentially when the action is triggered.
     </p>
 
     <h2 id="creating-action">Creating an Action</h2>
@@ -45,13 +45,13 @@
         <tr id="action-duration">
             <td><span>Action duration</span></td>
             <td>The duration of the action sets the target skill as already executing, preventing it from being played again.
-                The total duration is the sum of the <a href="/?page=pages/Base_Concepts/Function.html#function-delay" onclick="loadContent('pages/Base_Concepts/Function.html#function-delay'); return false">Function Delay</a> of functions below and the specified value.</td>
+                The total duration is the sum of the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Function.html#function-delay" onclick="loadContent('pages/Base_Concepts/Function.html#function-delay'); return false">Function Delay</a> of functions below and the specified value.</td>
             <td><span>0 (min: 0)</span></td>
         </tr>
         <tr id="reset-action-index-delay">
             <td><span>Reset action index delay</span></td>
-            <td>Only available in <a href="/?page=pages/Base_Concepts/Skill.html#chain-type" onclick="loadContent('pages/Base_Concepts/Skill.html#chain-type'); return false">Chain Type</a> of skills.
-                It resets the <a href="/?page=pages/Base_Concepts/Skill.html#action-index" onclick="loadContent('pages/Base_Concepts/Skill.html#action-index'); return false">Action Index</a> of target skill.
+            <td>Only available in <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html#chain-type" onclick="loadContent('pages/Base_Concepts/Skill.html#chain-type'); return false">Chain Type</a> of skills.
+                It resets the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html#action-index" onclick="loadContent('pages/Base_Concepts/Skill.html#action-index'); return false">Action Index</a> of target skill.
                 If this is left at a value less than the duration of the target action, the index will never exceed 0, preventing subsequent actions from being played.</td>
             <td><span>0 (min: 0)</span></td>
         </tr>
