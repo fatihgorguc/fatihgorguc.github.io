@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform Variable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="transform-variable">Transform Variable</h1>
+<p>
+    The Transform variable is used to store and retrieve a Transform component.
+    It supports multiple retrieval methods, allowing it to reference a specific Transform directly
+    or obtain it dynamically from the dictionary.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Variable Type</span></td>
+        <td>Enum</td>
+        <td>Defines how the Transform value is retrieved. See <a href="#variable-types">Variable Types</a> for details.</td>
+    </tr>
+    <tr>
+        <td><span>Variable Reference</span></td>
+        <td>Transform</td>
+        <td>A direct reference to a Transform component (used when the variable type is set to "ByReference").</td>
+    </tr>
+    <tr>
+        <td><span>Dictionary Name</span></td>
+        <td>String</td>
+        <td>The key name used to fetch a Transform from the global dictionary (used when the variable type is "ByDictionaryKeyName").</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    This variable retrieves a Transform component based on the selected retrieval method.
+    If "ByReference" is chosen, it directly returns the assigned Transform.
+    If "ByDictionaryKeyName" is selected, it searches for the Transform in the global dictionary.
+    If a Transform is not found, it also checks if the key maps to a Component or GameObject
+    and retrieves their Transform accordingly.
+</p>
+
+<h2 id="variable-types">Variable Types</h2>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>ByReference</span></td>
+        <td>Uses a directly assigned Transform reference.</td>
+    </tr>
+    <tr>
+        <td><span>ByDictionaryKeyName</span></td>
+        <td>Looks up the Transform using a key in the global dictionary.</td>
+    </tr>
+</table>
+</body>
+</html>

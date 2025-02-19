@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vector3 Variable</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <h1 id="vector3-variable">Vector3 Variable</h1>
+        <p>
+            The Vector3 variable is used to store and retrieve a 3D position or directional value.
+            It can be assigned a static value, reference a Transform's position, or be dynamically retrieved from the dictionary.
+            Additionally, it supports modifiers to alter the value before returning it.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Variable Type</span></td>
+                <td>Enum</td>
+                <td>Defines how the Vector3 value is retrieved. See <a href="#variable-types">Variable Types</a> for details.</td>
+            </tr>
+            <tr>
+                <td><span>Variable Reference</span></td>
+                <td>Transform</td>
+                <td>A reference to a Transform component (used when the variable type is set to "ByReference"). The position of this Transform is used as the Vector3 value.</td>
+            </tr>
+            <tr>
+                <td><span>Variable Value</span></td>
+                <td>Vector3</td>
+                <td>A static Vector3 value (used when the variable type is set to "ByValue").</td>
+            </tr>
+            <tr>
+                <td><span>Dictionary Name</span></td>
+                <td>String</td>
+                <td>The key name used to fetch a Vector3 from the global dictionary (used when the variable type is "ByDictionaryKeyName").</td>
+            </tr>
+            <tr>
+                <td><span>Modifiers</span></td>
+                <td>Array of Modifiers</td>
+                <td>Applies transformations to the retrieved Vector3 value before returning it. See <a href="#available-modifiers">Available Modifiers</a> for details.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            This variable retrieves a Vector3 value based on the selected retrieval method.
+            If "ByValue" is chosen, it returns a predefined Vector3 value.
+            If "ByReference" is selected, it fetches the position of a referenced Transform.
+            If "ByDictionaryKeyName" is selected, it searches for a Vector3 value in the global dictionary.
+            If a valid Vector3 is not found, it also checks if the key maps to a Transform, Component, or GameObject and retrieves their position accordingly.
+            Before returning the final value, any assigned modifiers are applied to modify the Vector3.
+        </p>
+        
+        <h2 id="variable-types">Variable Types</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>ByValue</span></td>
+                <td>Uses a predefined static Vector3 value.</td>
+            </tr>
+            <tr>
+                <td><span>ByReference</span></td>
+                <td>Uses the position of a referenced Transform.</td>
+            </tr>
+            <tr>
+                <td><span>ByDictionaryKeyName</span></td>
+                <td>Looks up the Vector3 using a key in the global dictionary.</td>
+            </tr>
+        </table>
+    
+        <h2 id="available-modifiers">Available Modifiers</h2>
+        <p>
+            The Vector3 variable supports various modifiers that allow you to manipulate the retrieved value before returning it.
+            These modifiers can be used to scale, offset, or adjust the final Vector3 output.
+        </p>
+
+        <table>
+            <tr>
+                <th>Modifier</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/SaveToDictionary_Modifier.html" onclick="loadContent('pages/Modifiers/SaveToDictionary_Modifier.html'); return false">Save to Dictionary Modifier</a></span></td>
+                <td>Stores the modified Vector3 value into the dictionary for later retrieval.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Move_Modifier.html" onclick="loadContent('pages/Modifiers/Move_Modifier.html'); return false">Move Modifier</a></span></td>
+                <td>Adds a specified Vector3 value to the retrieved value.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Multiply_Modifier.html" onclick="loadContent('pages/Modifiers/Multiply_Modifier.html'); return false">Multiply Modifier</a></span></td>
+                <td>Multiplies the retrieved value by a specified Vector3 value.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Normalize_Modifier.html" onclick="loadContent('pages/Modifiers/Normalize_Modifier.html'); return false">Normalize Modifier</a></span></td>
+                <td>Normalizes the Vector3 value, converting it into a unit vector.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Randomize_Modifier.html" onclick="loadContent('pages/Modifiers/Randomize_Modifier.html'); return false">Randomize Modifier</a></span></td>
+                <td>Applies randomization to the Vector3 within a defined range.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Rotate_Modifier.html" onclick="loadContent('pages/Modifiers/Rotate_Modifier.html'); return false">Rotate Modifier</a></span></td>
+                <td>Applies a rotation to the Vector3 direction based on a specified quaternion.</td>
+            </tr>
+        </table>
+    </body>
+</html>

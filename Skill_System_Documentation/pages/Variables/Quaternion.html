@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quaternion Variable</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="quaternion-variable">Quaternion Variable</h1>
+        <p>
+            The Quaternion variable is used to store and retrieve a rotational value.
+            It can be assigned a static value, reference a Transform's rotation, or be dynamically retrieved from the dictionary.
+            Additionally, it supports modifiers to alter the value before returning it.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Variable Type</span></td>
+                <td>Enum</td>
+                <td>Defines how the Quaternion value is retrieved. See <a href="#variable-types">Variable Types</a> for details.</td>
+            </tr>
+            <tr>
+                <td><span>Variable Reference</span></td>
+                <td>Transform</td>
+                <td>A reference to a Transform component (used when the variable type is set to "ByReference"). The rotation of this Transform is used as the Quaternion value.</td>
+            </tr>
+            <tr>
+                <td><span>Variable Value</span></td>
+                <td>Quaternion</td>
+                <td>A static Quaternion value (used when the variable type is set to "ByValue").</td>
+            </tr>
+            <tr>
+                <td><span>Dictionary Name</span></td>
+                <td>String</td>
+                <td>The key name used to fetch a Quaternion from the global dictionary (used when the variable type is "ByDictionaryKeyName").</td>
+            </tr>
+            <tr>
+                <td><span>Modifiers</span></td>
+                <td>Array of Modifiers</td>
+                <td>Applies transformations to the retrieved Quaternion value before returning it. See <a href="#available-modifiers">Available Modifiers</a> for details.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            This variable retrieves a Quaternion value based on the selected retrieval method.
+            If "ByValue" is chosen, it returns a predefined Quaternion value.
+            If "ByReference" is selected, it fetches the rotation of a referenced Transform.
+            If "ByDictionaryKeyName" is selected, it searches for a Quaternion value in the global dictionary.
+            If a valid Quaternion is not found, it also checks if the key maps to a Transform, Component, or GameObject and retrieves their rotation accordingly.
+            Before returning the final value, any assigned modifiers are applied to modify the Quaternion.
+        </p>
+        
+        <h2 id="variable-types">Variable Types</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>ByValue</span></td>
+                <td>Uses a predefined static Quaternion value.</td>
+            </tr>
+            <tr>
+                <td><span>ByReference</span></td>
+                <td>Uses the rotation of a referenced Transform.</td>
+            </tr>
+            <tr>
+                <td><span>ByDictionaryKeyName</span></td>
+                <td>Looks up the Quaternion using a key in the global dictionary.</td>
+            </tr>
+        </table>
+        
+        <h2 id="available-modifiers">Available Modifiers</h2>
+        <p>
+            The Quaternion variable supports various modifiers that allow you to manipulate the retrieved value before returning it.
+            These modifiers can be used to rotate, offset, or adjust the final Quaternion output.
+        </p>
+        
+        <table>
+            <tr>
+                <th>Modifier</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/SaveToDictionary_Modifier.html" onclick="loadContent('pages/Modifiers/SaveToDictionary_Modifier.html'); return false">Save to Dictionary Modifier</a></span></td>
+                <td>Stores the modified Quaternion value into the dictionary for later retrieval.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Multiply_Modifier.html" onclick="loadContent('pages/Modifiers/Multiply_Modifier.html'); return false">Multiply Modifier</a></span></td>
+                <td>Multiplies the retrieved Quaternion value by a specified Vector3 value.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Normalize_Modifier.html" onclick="loadContent('pages/Modifiers/Normalize_Modifier.html'); return false">Normalize Modifier</a></span></td>
+                <td>Normalizes the Quaternion to maintain unit length.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Randomize_Modifier.html" onclick="loadContent('pages/Modifiers/Randomize_Modifier.html'); return false">Randomize Modifier</a></span></td>
+                <td>Applies randomization to the Quaternion within a defined range.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/Rotate_Modifier.html" onclick="loadContent('pages/Modifiers/Rotate_Modifier.html'); return false">Rotate Modifier</a></span></td>
+                <td>Multiplies the Quaternion value by a specified Quaternion to apply rotation.</td>
+            </tr>
+            <tr>
+                <td><span><a href="/?page=pages/Modifiers/RotateTowardsVector_Modifier.html" onclick="loadContent('pages/Modifiers/RotateTowardsVector_Modifier.html'); return false">Rotate Towards Vector Modifier</a></span></td>
+                <td>Multiplies the Quaternion by a rotation generated from a specified forward and up vector. This applies a directional adjustment to the existing rotation.</td>
+            </tr>
+        </table>
+    </body>
+</html>
