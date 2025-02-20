@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalize Modifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="normalize-modifier">Normalize Modifier</h1>
+<p>
+    The Normalize Modifier adjusts the input variable to have a standard magnitude. It is applicable to Vector3, Quaternion, and float values.
+    Normalization ensures that the output maintains its direction but has a fixed magnitude.
+</p>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    The modifier applies normalization based on the type of the input variable. 
+    If the input type is not a Vector3, Quaternion, or float, an error is logged, and the input remains unchanged.
+</p>
+<ul>
+    <li><span>Vector3:</span> The vector is converted to a unit vector with a length of 1 while maintaining its direction.</li>
+    <pre><code>
+result = vector.normalized;
+</code></pre>
+    <li><span>Quaternion:</span> The quaternion is normalized to ensure it remains a valid rotation.</li>
+    <pre><code>
+result = quaternion.normalized;
+</code></pre>
+    <li><span>Float:</span> The float value is converted to either -1 or 1, depending on its sign.</li>
+<pre><code>
+result = num / Mathf.Abs(num);
+</code></pre>
+</ul>
+
+</body>
+</html>

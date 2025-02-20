@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomize Modifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="randomize-modifier">Randomize Modifier</h1>
+<p>
+    The Randomize Modifier alters the input variable by applying a random multiplier or offset within a specified range.
+    It can be used with Vector3, Quaternion, and numeric values to introduce controlled randomness into calculations.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Range Min</span></td>
+        <td><a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+        <td>The minimum possible random value.</td>
+    </tr>
+    <tr>
+        <td><span>Range Max</span></td>
+        <td><a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+        <td>The maximum possible random value.</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    The modifier applies a random factor to the input based on its type.
+    If the input type is not a Vector3, Quaternion, or a convertible numeric value, an error is logged, and the input remains unchanged.
+</p>
+<pre><code>
+float GetRandomMultiplier() => 
+    Random.Range(rangeMin, rangeMax);
+</code></pre>
+<ul>
+    <li><span>Vector3:</span> Each component of the vector is multiplied by a separate random value within the range.</li>
+    <pre><code>
+result = new Vector3(
+        vector.x * GetRandomMultiplier(),
+        vector.y * GetRandomMultiplier(),
+        vector.z * GetRandomMultiplier());
+</code></pre>
+    <li><span>Quaternion:</span> Each Euler angle of the quaternion is adjusted by adding a random value within the range.</li>
+    <pre><code>
+result = Quaternion.Euler(
+        quaternion.eulerAngles.x + GetRandomMultiplier(),
+        quaternion.eulerAngles.y + GetRandomMultiplier(),
+        quaternion.eulerAngles.z + GetRandomMultiplier());
+</code></pre>
+    <li><span>Float:</span> The numeric value is multiplied by a random value within the range.</li>
+    <pre><code>
+result *= GetRandomMultiplier();
+</code></pre>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotate Towards Vector Modifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="rotate-towards-vector-modifier">Rotate Towards Vector Modifier</h1>
+<p>
+    The Rotate Towards Vector Modifier rotates a quaternion to face a specified direction.
+    It applies a rotational transformation using a forward and up vector.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Vector Forward</span></td>
+        <td><a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+        <td>The forward direction used to compute the new rotation.</td>
+    </tr>
+    <tr>
+        <td><span>Vector Up</span></td>
+        <td><a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+        <td>The up direction used to compute the new rotation.</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    This modifier updates the input quaternion by rotating it towards the given forward and up vectors.
+    If the input type is not a Quaternion, an error is logged, and the input remains unchanged.
+</p>
+<ul>
+    <li><span>Quaternion:</span> The input quaternion is rotated by applying a look rotation.</li>
+
+    <pre><code>
+result = quaternion * Quaternion.LookRotation(
+        vectorForward, vectorUp);
+</code></pre>
+</ul>
+
+</body>
+</html>
