@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Move Modifier</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="move-modifier">Move Modifier</h1>
+        <p>
+            The Move Modifier adds a specified Vector3 value to the input Vector3 variable.
+            This is useful for modifying positions or directional values dynamically.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Vector</span></td>
+                <td><a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+                <td>The Vector3 value that will be added to the input variable.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            The modifier retrieves a Vector3 value and adds it to the input Vector3 variable before returning the result.
+            If the input type is not a Vector3, an error is logged, and the input remains unchanged.
+        </p>
+        
+<pre><code>
+result += vector.Get();
+</code></pre>
+    </body>
+</html>

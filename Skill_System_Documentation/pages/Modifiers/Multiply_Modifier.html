@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multiply Modifier</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="multiply-modifier">Multiply Modifier</h1>
+        <p>
+            The Multiply Modifier scales the input variable by a specified multiplier.
+            There are two variations of this modifier: one for <a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a>,
+            and another for <a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a> and
+            <a href="/Skill_System_Documentation/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a> values.
+        </p>
+        
+        <h2 id="float-multiply">Multiply Modifier (Float)</h2>
+        <p>
+            This version of the Multiply Modifier applies a float multiplier to a numeric value.
+        </p>
+        
+        <h3>Parameters</h3>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Multiplier</span></td>
+                <td><a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+                <td>The float value by which the input variable will be multiplied.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            If the input is a numeric type (such as int, float, or double), it is converted to a double, multiplied by the float multiplier, and returned as the same type.
+        </p>
+        
+<pre><code>
+result *= multiplier.Get();
+</code></pre>
+        
+        <h2 id="vector3-multiply">Multiply Modifier (Vector3 and Quaternion)</h2>
+        <p>
+            This version of the Multiply Modifier uses a Vector3 multiplier instead of a single float.
+            It applies element-wise multiplication to Vector3 and Quaternion values.
+        </p>
+        
+        <h3>Parameters</h3>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Multiplier</span></td>
+                <td><a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
+                <td>The Vector3 value by which each component of the input variable will be multiplied.</td>
+            </tr>
+        </table>
+
+        <h2 id="functionality2">Functionality</h2>
+        <p>
+            The modifier applies element-wise multiplication:
+        </p>
+        <ul>
+            <li><span>Vector3:</span> Each component of the input Vector3 is multiplied by the corresponding component of the Vector3 multiplier.</li>
+<pre><code>
+result = new Vector3(
+    vector.x * multiplier.x,
+    vector.y * multiplier.y,
+    vector.z * multiplier.z);
+</code></pre>
+            <li><span>Quaternion:</span> The x, y, and z components of the quaternion are multiplied separately by the respective components of the Vector3 multiplier, and the result is converted back into a quaternion.</li>
+<pre><code>
+result = Quaternion.Euler(new Vector3(
+    quaternion.x * multiplier.x,
+    quaternion.y * multiplier.y,
+    quaternion.z * multiplier.z));
+</code></pre>
+        </ul>
+        
+    </body>
+</html>

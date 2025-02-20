@@ -136,6 +136,7 @@ html {
     width: 50px;
     height: 50px;
     image-rendering: pixelated;
+    fill: var(--secondary-color);
 }
 
 .icon-wrapper:hover {
@@ -322,6 +323,7 @@ html {
     border-radius: 10px;
     border: 1px solid var(--highlight-color);
     display: block;
+    font-size: 90%;
 }
 
 .content-area table {
@@ -561,6 +563,7 @@ html {
         border-radius: 10px;
         border: 1px solid var(--highlight-color);
         display: block;
+        font-size: 60%;
     }
 
     .content-area table {

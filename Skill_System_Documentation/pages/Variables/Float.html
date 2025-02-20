@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Variable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="float-variable">Float Variable</h1>
+<p>
+    The Float variable is used to store and retrieve a numerical value.
+    It can be assigned a static value or dynamically retrieved from the dictionary.
+    Additionally, it supports modifiers to alter the value before returning it.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>Variable Type</span></td>
+        <td>Enum</td>
+        <td>Defines how the float value is retrieved. See <a href="#variable-types">Variable Types</a> for details.</td>
+    </tr>
+    <tr>
+        <td><span>Variable Value</span></td>
+        <td>Float</td>
+        <td>A static float value (used when the variable type is set to "ByValue").</td>
+    </tr>
+    <tr>
+        <td><span>Dictionary Name</span></td>
+        <td>String</td>
+        <td>The key name used to fetch a float from the global dictionary (used when the variable type is "ByDictionaryKeyName").</td>
+    </tr>
+    <tr>
+        <td><span>Modifiers</span></td>
+        <td>Array of Modifiers</td>
+        <td>Applies transformations to the retrieved float value before returning it. See <a href="#available-modifiers">Available Modifiers</a> for details.</td>
+    </tr>
+</table>
+
+<h2 id="functionality">Functionality</h2>
+<p>
+    This variable retrieves a float value based on the selected retrieval method.
+    If "ByValue" is chosen, it returns a predefined float value.
+    If "ByDictionaryKeyName" is selected, it searches for a float value in the global dictionary.
+    It also attempts to convert any available numeric value (such as an integer or double) to a float.
+    Before returning the final value, any assigned modifiers are applied to modify the float.
+</p>
+
+<h2 id="variable-types">Variable Types</h2>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span>ByValue</span></td>
+        <td>Uses a predefined static float value.</td>
+    </tr>
+    <tr>
+        <td><span>ByDictionaryKeyName</span></td>
+        <td>Looks up for any numeric value to convert float using a key in the global dictionary.</td>
+    </tr>
+</table>
+
+<h2 id="available-modifiers">Available Modifiers</h2>
+<p>
+    The Float variable supports various modifiers that allow you to manipulate the retrieved value before returning it.
+    These modifiers can be used to scale, clamp, or adjust the final float output.
+</p>
+
+<table>
+    <tr>
+        <th>Modifier</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span><a href="/?page=pages/Modifiers/SaveToDictionary_Modifier.html" onclick="loadContent('pages/Modifiers/SaveToDictionary_Modifier.html'); return false">Save to Dictionary Modifier</a></span></td>
+        <td>Stores the modified float value into the dictionary for later retrieval.</td>
+    </tr>
+    <tr>
+        <td><span><a href="/?page=pages/Modifiers/Add_Modifier.html" onclick="loadContent('pages/Modifiers/Add_Modifier.html'); return false">Add Modifier</a></span></td>
+        <td>Adds a specified float value to the retrieved value.</td>
+    </tr>
+    <tr>
+        <td><span><a href="/?page=pages/Modifiers/Multiply_Modifier.html" onclick="loadContent('pages/Modifiers/Multiply_Modifier.html'); return false">Multiply Modifier</a></span></td>
+        <td>Multiplies the retrieved value by a specified float value.</td>
+    </tr>
+    <tr>
+        <td><span><a href="/?page=pages/Modifiers/Normalize_Modifier.html" onclick="loadContent('pages/Modifiers/Normalize_Modifier.html'); return false">Normalize Modifier</a></span></td>
+        <td>Normalizes the float value, ensuring it stays within a unit range.</td>
+    </tr>
+    <tr>
+        <td><span><a href="/?page=pages/Modifiers/Randomize_Modifier.html" onclick="loadContent('pages/Modifiers/Randomize_Modifier.html'); return false">Randomize Modifier</a></span></td>
+        <td>Applies randomization to the float within a defined range.</td>
+    </tr>
+</table>
+</body>
+</html>

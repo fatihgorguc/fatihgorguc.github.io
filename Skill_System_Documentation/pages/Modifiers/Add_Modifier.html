@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Modifier</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="add-modifier">Add Modifier</h1>
+        <p>
+            The Add Modifier increases the value of a numeric variable by a specified amount.
+            It is applicable to all variables that can be converted to a numeric format.
+            The modifier retrieves a float value and adds it to the input variable before returning the result.
+        </p>
+        
+        <h2 id="parameters">Parameters</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>Value</span></td>
+                <td><a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+                <td>The float value that will be added to the input variable.</td>
+            </tr>
+        </table>
+        
+        <h2 id="functionality">Functionality</h2>
+        <p>
+            The modifier attempts to convert the input variable to a numeric format.
+            If the conversion is successful, the retrieved float value is added to it.
+            If the input type is not convertible to a numeric value, an error is logged, and the input remains unchanged.
+        </p>
+<pre><code>
+result += value;
+</code></pre>
+    </body>
+</html>
