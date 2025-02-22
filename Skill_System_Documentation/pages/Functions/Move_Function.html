@@ -11,7 +11,7 @@
         <p>
             The Move function is responsible for modifying an object's position or velocity.
             It supports different movement types, allowing you to set position, add position,
-            set velocity, or apply force to a Rigidbody component.
+            set velocity, or apply force to a Rigidbody or Rigidbody2D component.
         </p>
         
         <h2 id="parameters">Parameters</h2>
@@ -35,6 +35,11 @@
                 <td><span>Target Rigidbody</span></td>
                 <td>Rigidbody</td>
                 <td>The Rigidbody component of the object to modify. Used in SetVelocity and AddForce.</td>
+            </tr>
+            <tr>
+                <td><span>Target Rigidbody2D</span></td>
+                <td>Rigidbody2D</td>
+                <td>The Rigidbody2D component of the object to modify. Used in SetVelocity2D and AddForce2D.</td>
             </tr>
             <tr>
                 <td><span>Vector</span></td>
@@ -71,6 +76,14 @@
             <tr>
                 <td><span>AddForce</span></td>
                 <td>Applies force to the Rigidbody using the given vector.</td>
+            </tr>
+            <tr>
+                <td><span>SetVelocity2D</span></td>
+                <td>Directly sets the velocity of the Rigidbody2D to the given vector.</td>
+            </tr>
+            <tr>
+                <td><span>AddForce2D</span></td>
+                <td>Applies force to the Rigidbody2D using the given vector.</td>
             </tr>
         </table>
     </body>

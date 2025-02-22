@@ -11,7 +11,7 @@
         <p>
             The Rotate function is responsible for modifying an object's rotation or angular velocity.
             It supports different rotation types, allowing you to set rotation, add rotation,
-            set torque, or apply torque to a Rigidbody component.
+            set torque, or apply torque to a Rigidbody or Rigidbody2D component.
         </p>
         
         <h2 id="parameters">Parameters</h2>
@@ -37,6 +37,11 @@
                 <td>The Rigidbody component to apply rotational force or torque.</td>
             </tr>
             <tr>
+                <td><span>Target Rigidbody2D</span></td>
+                <td>Rigidbody2D</td>
+                <td>The Rigidbody2D component to apply 2D rotational force or torque.</td>
+            </tr>
+            <tr>
                 <td><span>Rotation</span></td>
                 <td><a href="/Skill_System_Documentation/?page=pages/Variables/Quaternion.html" onclick="loadContent('pages/Variables/Quaternion.html'); return false">Quaternion</a></td>
                 <td>The rotation value used for SetRotation and AddRotation.</td>
@@ -45,6 +50,11 @@
                 <td><span>Vector</span></td>
                 <td><a href="/Skill_System_Documentation/?page=pages/Variables/Vector3.html" onclick="loadContent('pages/Variables/Vector3.html'); return false">Vector3</a></td>
                 <td>The vector value used for SetTorque and AddTorque.</td>
+            </tr>
+            <tr>
+                <td><span>Value</span></td>
+                <td><a href="/Skill_System_Documentation/?page=pages/Variables/Float.html" onclick="loadContent('pages/Variables/Float.html'); return false">Float</a></td>
+                <td>The float value used for SetTorque2D and AddTorque2D.</td>
             </tr>
         </table>
         
@@ -56,8 +66,8 @@
         <ul>
             <li>Set an object's rotation to a specific value.</li>
             <li>Add a rotation to the object's current rotation.</li>
-            <li>Directly set the angular velocity of a Rigidbody.</li>
-            <li>Apply torque to a Rigidbody for physics-based rotation.</li>
+            <li>Directly set the angular velocity of a Rigidbody or Rigidbody2D.</li>
+            <li>Apply torque to a Rigidbody or Rigidbody2D for physics-based rotation.</li>
         </ul>
         
         <h2 id="rotate-types">Rotate Types</h2>
@@ -81,6 +91,14 @@
             <tr>
                 <td><span>AddTorque</span></td>
                 <td>Applies a torque force to the Rigidbody using the specified vector, influencing its rotation over time.</td>
+            </tr>
+            <tr>
+                <td><span>SetTorque2D</span></td>
+                <td>Directly sets the Rigidbody2D's angular velocity to the specified float value.</td>
+            </tr>
+            <tr>
+                <td><span>AddTorque2D</span></td>
+                <td>Applies a torque force to the Rigidbody2D using the specified float value, influencing its rotation over time.</td>
             </tr>
         </table>
     </body>

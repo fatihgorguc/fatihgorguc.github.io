@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
             
     private void Start()
     {
-        SSStaticDictionary.Add("playerSpeed" moveSpeed);
+        SSDictionary.Add("playerSpeed" moveSpeed);
     }
 }
 </code></pre>
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     
     private void SetSpeed()
     {
-        speed = SSStaticDictionary.Get&lt;float&gt;(playerSpeed);
+        speed = SSDictionary.Get&lt;float&gt;(playerSpeed);
     }
 }
 </code></pre>
@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour
             
     private void Start()
     {
-        SSStaticDictionary.Add("playerSpeed" moveSpeed);
+        SSDictionary.Add("playerSpeed" moveSpeed);
     }
 }
 </code></pre>
@@ -72,7 +72,7 @@ public class PlayerStats : MonoBehaviour
             
     private void Start()
     {
-        SSStaticDictionary.ForceAdd("playerSpeed" moveSpeed);
+        SSDictionary.ForceAdd("playerSpeed" moveSpeed);
     }
 }
 </code></pre>
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     
     private void SetSpeed()
     {
-        speed = SSStaticDictionary.Get&lt;float&gt;(playerSpeed);
+        speed = SSDictionary.Get&lt;float&gt;(playerSpeed);
     }
 }
 </code></pre>
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     
     private void SetSpeed()
     {
-        if (SSStaticDictionary
+        if (SSDictionary
             .TryGet&lt;float&gt;(playerSpeed, out playerSpeed))
         {
             speed = playerSpeed;
@@ -126,13 +126,13 @@ public class Player : MonoBehaviour
     
     private void SetSpeed()
     {
-        if (SSStaticDictionary.ContainsKey(playerSpeed))
+        if (SSDictionary.ContainsKey(playerSpeed))
         {
-            SSStaticDictionary.Add("playerMoveSpeed" speed);
+            SSDictionary.Add("playerMoveSpeed" speed);
         }
         else
         {
-            SSStaticDictionary.Add("playerSpeed" speed);
+            SSDictionary.Add("playerSpeed" speed);
         }
     }
 }
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
 {
     private void ClearDictionary()
     {
-        SSStaticDictionary.Clear();
+        SSDictionary.Clear();
     }
 }
 </code></pre>
