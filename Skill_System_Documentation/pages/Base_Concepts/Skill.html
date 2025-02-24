@@ -145,5 +145,22 @@ public class Player : MonoBehaviour
     }
 }
 </code></pre>
+        <p>
+            <span>- IsActionPlaying()</span> Returns whether is action playing or not.
+        </p>
+        <pre><code>
+public class Player : MonoBehaviour
+{
+    public SSSkill basicAttack;
+            
+    private void MoveIfActionStopped()
+    {
+        if (!basicAttack.IsActionPlaying)
+        {
+            Move();
+        }
+    }
+}
+</code></pre>
     </body>
 </html>
