@@ -63,3 +63,7 @@ function openInNewTab(url){
     window.open(url, '_blank');
 }
 
+function setHref(url) {
+    window.location.href = url;
+}
+

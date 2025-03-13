@@ -11,6 +11,7 @@ const cards = [
     new Card(1,'images/CardFront1.png', 'images/CardBackLow1.png', 'pages/about-me.html'),
     new Card(2,'images/CardFront2.png', 'images/CardBackLow2.png', 'pages/resume.html'),
     new Card(3,'images/CardFront3.png', 'images/CardBackLow3.png', 'pages/agent-in-depth.html'),
+    new Card(5,'images/CardFront5.png', 'images/CardBackLow5.png', 'pages/skill-system.html'),
     new Card(4,'images/CardFront4.png', 'images/CardBackLow4.png', 'pages/socials.html'),
 ];
 

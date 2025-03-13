@@ -337,6 +337,7 @@ html {
     border-radius: 3px;
 }
 
+/* -------------------Mobile------------------- */
 
 @media (max-aspect-ratio: 1/1) {
     .background {
