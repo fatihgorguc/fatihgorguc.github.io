@@ -15,6 +15,7 @@
     --primary-color: rgba(20, 30, 35, 1);
     --secondary-color: rgba(244, 223, 189, 1);
     --highlight-color: rgba(234, 180, 57, 1);
+    --highlight-light-color: rgba(255, 255, 255, 1);
     --code-background-color: rgba(23,23,23, 1);
 }
 
@@ -302,6 +303,11 @@ html {
     font-weight: normal;
     color: var(--highlight-color);
     text-decoration: none;
+}
+
+.content-area h3 {
+    color: var(--highlight-color);
+    font-size: 22px;
 }
 .content-area li {
     margin-left: -10px;

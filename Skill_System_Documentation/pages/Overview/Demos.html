@@ -8,5 +8,240 @@
     </head>
     <body>
         <h1>Demos</h1>
+
+        <p>
+            This page showcases different demo scenes that demonstrate how to use the Skill System.
+            Each demo includes multiple skills, and we will break down their implementation step by step.
+        </p>
+        
+        <h2>2D Demo – Skill System Usage</h2>
+        <p>
+            In this scene, we added a GameObject named Skills to our character and attached as many GameObjects with the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html" onclick="loadContent('pages/Base_Concepts/Skill.html'); return false">SSSkill</a> component as we wanted.
+        </p>
+        <ul>
+            <li>We referenced these SSSkill components in the character's controller.</li>
+            <li>When a designated input key was pressed, we called the <a>PlayNextAction()</a> function of the corresponding SSSkill component.</li>
+            <li>This allowed the skill to play the next Action in its sequence with each call.</li>
+        </ul>
+        <p>
+            This setup ensured that skills progressed step by step and integrated seamlessly with the character controller using the Skill System.
+        </p>
+        <section id="basic-attack">
+            <h2>Basic Attack</h2>
+            <p>
+                The Basic Attack skill allows the character to create and launch a projectile in a horizontal direction.
+                This attack consists of two different animations, and one of them is randomly selected each time the skill is used.
+                Since we want one of the two animations to play randomly, we set the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html#skill-types" onclick="loadContent('pages/Base_Concepts/Skill.html#skill-types'); return false">Skill Type</a> to Random.
+            </p>
+            
+            <p>
+                The skill starts by playing an animation. Since we have chosen the Random skill type,
+                we create two separate actions, each playing a different animation. In the demo,
+                one action plays the right-hand animation, while the other plays the left-hand animation.
+            </p>
+
+            <p>
+                After the animation, we use an <a href="/Skill_System_Documentation/?page=pages/Functions/Instantiate_Function.html" onclick="loadContent('pages/Functions/Instantiate_Function.html'); return false">Instantiate Function</a> to spawn the projectile.
+                This function requires a position and rotation. The rotation is not important for this skill,
+                so we leave it at the default value of <a>(0, 0, 0)</a>. The initial position is set to
+                the character's position using <a>transform.position</a>.
+            </p>
+
+            <p>
+                To determine the correct direction, we use the <a>handPos</a> value, which was previously stored in a dictionary.
+            </p>
+            <pre><code>
+SSDictionary.ForceAdd("handPos", new Vector2(_faceDirection, 0));
+</code></pre>
+            <p>
+                Using a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Move_Modifier.html" onclick="loadContent('pages/Modifiers/Move_Modifier.html'); return false">Move Modifier</a>, we add <a>handPos</a>
+                to the character’s position, resulting in <a>transform.position + handPos (1 or -1, 0)</a>.
+                To further adjust the projectile’s position, we apply a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Multiply_Modifier.html" onclick="loadContent('pages/Modifiers/Multiply_Modifier.html'); return false">Multiply Modifier</a> to <a>handPos</a>,
+                scaling only the x-axis by <a>0.5</a> while keeping the y and z values unchanged.
+                The final position is calculated as:
+            </p>
+<pre><code>
+transform.position + (handPos * new Vector3(0.5f, 1, 1))
+</code></pre>
+
+            <p>
+                The instantiated object is then stored in the dictionary under the name <a>clone</a>,
+                so we can use it in the following functions.
+            </p>
+
+            <p>
+                The next step is to add a <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a> to the action. Since we are working
+                with a 2D Rigidbody and we want to directly set its velocity, we set the <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html#move-types" onclick="loadContent('pages/Functions/Move_Function.html#move-types'); return false">Move Type</a> to Set Velocity 2D.
+                The target Rigidbody is assigned to the previously instantiated <a>clone</a> object.
+            </p>
+
+            <p>
+                We define the velocity vector based on the desired speed. To ensure the projectile moves in the correct direction,
+                we multiply the velocity by <a>handPos (1 or -1, 0)</a>, which determines whether the projectile moves left or right.
+            </p>
+            
+            <p>
+                Without a cooldown, the player could spam the skill. To prevent this, we set the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a> to <a>0.5</a> seconds,
+                allowing it to be used twice per second.
+            </p>
+        </section>
+        
+        <section id="spawn-and-redirect">
+            <h2>Spawn and Redirect</h2>
+            <p>
+                The Spawn and Redirect skill allows the character to spawn up to four projectiles on the ground and lift them into the air with each activation.
+                On the fifth activation, all spawned projectiles are directed toward the mouse position.
+            </p>
+            <p>
+                Since this skill follows a sequential process-first spawning and lifting projectiles, then redirecting them-we set the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html#skill-types" onclick="loadContent('pages/Base_Concepts/Skill.html#skill-types'); return false">Skill Type</a> to Chain.
+                The skill consists of five actions, with the first four being identical.
+            </p>
+
+            <h3>First Four Actions</h3>
+            <p>Each of the first four actions consists of the following steps:</p>
+            <ul>
+                <li>Play the character’s animation.</li>
+                <li>Instantiate a projectile at player <a>transform.position + (0, -1, 0)</a> using an <a href="/Skill_System_Documentation/?page=pages/Functions/Instantiate_Function.html" onclick="loadContent('pages/Functions/Instantiate_Function.html'); return false">Instantiate Function</a>.</li>
+                <li>Apply a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Move_Modifier.html" onclick="loadContent('pages/Modifiers/Move_Modifier.html'); return false">Move Modifier</a> with the value <a>(1, 0, 0)</a>.</li>
+                <li>Use a second Move Modifier multiplied by <a>(-1, 1)</a> to create variation.</li>
+                <li>Apply a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Randomize_Modifier.html" onclick="loadContent('pages/Modifiers/Randomize_Modifier.html'); return false">Randomize Modifier</a> for further positional randomness.</li>
+                <li>Store the instantiated projectile in the dictionary under the key <a>clone1</a>.</li>
+            </ul>
+
+            <h3>Projectile Movement</h3>
+            <p>
+                After instantiating the projectile, we add a <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a> to lift it upward.
+            </p>
+            <ul>
+                <li>The Move Type is set to Set Velocity 2D.</li>
+                <li>The target Rigidbody is the previously instantiated <a>clone1</a> object.</li>
+                <li>The velocity is set to an upward force with a base value of <a>13</a>, multiplied by <a>(0.9f, 1.2f)</a> using a Randomize Modifier for variation.</li>
+            </ul>
+
+            <h3>Rotation Effect</h3>
+            <p>
+                To add a spinning effect to the projectile, we apply a <a href="/Skill_System_Documentation/?page=pages/Functions/Rotate_Function.html" onclick="loadContent('pages/Functions/Rotate_Function.html'); return false">Rotate Function</a>:
+            </p>
+            <ul>
+                <li>The Rotate Type is set to Set Torque 2D.</li>
+                <li>The torque value starts at <a>1</a> and is modified by a <a>(-1,1)</a> Randomize Modifier to determine direction.</li>
+                <li>The result is normalized and multiplied by <a>60</a> to create the base spin speed.</li>
+                <li>Finally, an additional <a>(1, 1.5)</a> Randomize Modifier is applied to introduce random variation in spin speed.</li>
+            </ul>
+
+            <h3>Stopping the Projectile</h3>
+            <p>
+                To ensure the projectile stops moving after a short duration, we add another Move Function:
+            </p>
+            <ul>
+                <li>A <a>0.15</a>-second delay is applied before execution.</li>
+                <li>The velocity of <a>clone1</a> is set to <a>(0,0,0)</a>, freezing its position.</li>
+            </ul>
+
+            <h3>Final Action - Redirecting the Projectiles</h3>
+            <p>
+                The fifth action redirects all previously spawned projectiles toward the mouse position.
+            </p>
+            <ul>
+                <li>Plays the character’s final animation.</li>
+                <li>Retrieves the stored projectiles (<a>clone1</a>, <a>clone2</a>, <a>clone3</a>, and <a>clone4</a>) from the dictionary.</li>
+                <li>Defines the target direction using the mouse position:
+                    <pre><code>
+SSDictionary.ForceAdd("mousePos",
+             Camera.main.ScreenToWorldPoint(Input.mousePosition));
+</code></pre>
+                </li>
+                <li>For each projectile, applies a <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a> with the following properties:
+                    <ul>
+                        <li>Move Type: Set Velocity 2D</li>
+                        <li>Velocity vector: Adjusted to move toward <a>mousePos</a> by subtracting the projectile's current position.</li>
+                        <li>Normalized to maintain direction.</li>
+                        <li>Multiplied by <a>(50,50,50)</a> for speed adjustment.</li>
+                    </ul>
+                </li>
+                <li>Each move function is executed sequentially with a <a>0.1</a> second delay between each projectile.</li>
+                <li>The total duration of this action is set to <a>1</a> second to ensure smooth execution.</li>
+            </ul>
+            
+        </section>
+
+        <section id="jump-and-dive">
+            <h2>Jump and Dive</h2>
+            <p>
+                The <strong>Jump and Dive</strong> skill allows the character to first jump upwards, hover briefly,
+                and then dive downwards with increased speed, dealing damage to nearby enemies upon landing.
+            </p>
+
+            <h3>Skill Type: Single</h3>
+            <p>
+                Since the skill only needs to be triggered once and executed in a single sequence,
+                we set the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Skill.html#skill-types" onclick="loadContent('pages/Base_Concepts/Skill.html#skill-types'); return false">Skill Type</a> to Single.
+            </p>
+
+            <h3>Animation</h3>
+            <p>
+                The skill begins by playing the character's desired animation.
+                We use the <a href="/Skill_System_Documentation/?page=pages/Functions/Animation_Function.html" onclick="loadContent('pages/Functions/Animation_Function.html'); return false">Animation Function</a> to trigger the animation.
+                The chosen animation plays when the skill is activated.
+            </p>
+
+            <h3>Particle Effects</h3>
+            <p>
+                After the animation, we play the corresponding visual effects.
+                We use the <a href="/Skill_System_Documentation/?page=pages/Functions/VisualFX_Function.html" onclick="loadContent('pages/Functions/VisualFX_Function.html'); return false">VFX Function</a> 
+                with the <a href="/Skill_System_Documentation/?page=pages/Functions/VisualFX_Function.html#vfx-types" onclick="loadContent('pages/Functions/VisualFX_Function.html#vfx-types'); return false">VFX Type</a> set to Play.
+                The particle system assigned to the skill will be triggered, showing visual effects like dust, sparkles, or any custom VFX for the jump.
+            </p>
+
+            <h3>Upward Force</h3>
+            <p>
+                To initiate the jump, we apply an upward force to the character.
+                We add a <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a>
+                and set the <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html#move-types" onclick="loadContent('pages/Functions/Move_Function.html#move-types'); return false">Move Type</a> to Add Force 2D.
+                The force vector is set to <a>(0, 1100, 0)</a> to propel the character upwards. This force is applied to the character’s Rigidbody.
+            </p>
+
+            <h3>Hovering</h3>
+            <p>
+                After the initial jump, the character hovers in the air for a short period.
+                To achieve this, we add five <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Functions</a>,
+                each with a <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html#move-types" onclick="loadContent('pages/Functions/Move_Function.html#move-types'); return false">Move Type</a> of Set Velocity 2D.
+                The velocity vector for these functions is set to <a>(0, 0, 0)</a> to maintain the hover state for a brief moment.
+                Each of these Move Functions has a delay of <a>0.05</a> seconds, and they ensure the character stays suspended in the air for a short duration.
+            </p>
+
+            <h3>Downward Dive</h3>
+            <p>
+                Once the hover duration ends, we speed up the character's descent by adding another <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html" onclick="loadContent('pages/Functions/Move_Function.html'); return false">Move Function</a>.
+                For this function, we set the <a href="/Skill_System_Documentation/?page=pages/Functions/Move_Function.html#move-types" onclick="loadContent('pages/Functions/Move_Function.html#move-types'); return false">Move Type</a> to Set Velocity 2D,
+                with the velocity vector set to <a>(0, -20, 0)</a>.
+                This will cause the character to accelerate downwards, simulating a dive toward the ground.
+            </p>
+
+            <h3>Dive Particle Effect</h3>
+            <p>
+                At the same time as the downward movement, we trigger the dive particle effect.
+                We use a <a href="/Skill_System_Documentation/?page=pages/Functions/VisualFX_Function.html" onclick="loadContent('pages/Functions/VisualFX_Function.html'); return false">VFX Function</a>
+                to play the dive particles that were previously assigned to the skill.
+            </p>
+
+            <h3>Instantiating Damage Area</h3>
+            <p>
+                Finally, we instantiate an object to represent the damage area at the point where the character lands.
+                We use an <a href="/Skill_System_Documentation/?page=pages/Functions/Instantiate_Function.html" onclick="loadContent('pages/Functions/Instantiate_Function.html'); return false">Instantiate Function</a> with a <a>0.25</a> second delay.
+                The position of the instantiated object is set to the character's position but modified by multiplying the vector by <a>(1, 0, 0)</a> using a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Multiply_Modifier.html" onclick="loadContent('pages/Modifiers/Multiply_Modifier.html'); return false">Multiply Modifier</a>.
+                This ensures the object is aligned with the character's x-axis and set the y and z values to 0.
+                The position is then adjusted downward by <a>3.5</a> using a <a href="/Skill_System_Documentation/?page=pages/Modifiers/Move_Modifier.html" onclick="loadContent('pages/Modifiers/Move_Modifier.html'); return false">Move Modifier</a> with a vector of <a>(0, -3.5, 0)</a>.
+            </p>
+
+            <h3>Action Duration</h3>
+            <p>
+                To make the skill feel smooth and controlled,
+                we set the <a href="/Skill_System_Documentation/?page=pages/Base_Concepts/Action.html#action-duration" onclick="loadContent('pages/Base_Concepts/Action.html#action-duration'); return false">Action Duration</a>
+                to <a>0.3 seconds</a>, meaning the entire action takes <a>1.3 seconds</a> to complete.
+            </p>
+        </section>
+
     </body>
 </html>
+
